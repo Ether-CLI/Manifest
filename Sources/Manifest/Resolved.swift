@@ -13,4 +13,13 @@ extension Manifest {
         let resolved = try Data(contentsOf: resolvedURL)
         return try JSONDecoder().decode(Resolved.self, from: resolved)
     }
+    
+    /// Gets the data from the package's `.resolved` file about a package with a given name.
+    ///
+    /// - Parameter name: The name of the package to fetch.
+    /// - Returns: The package's pin data.
+    /// - Throws: Errors that occur when fetching the data.
+    func package(withName name: String)throws -> Pin? {
+        return try self.resolved().object.pins.filter({ $0.package == name }).first
+    }
 }
