@@ -22,4 +22,13 @@ extension Manifest {
     func package(withName name: String)throws -> Pin? {
         return try self.resolved().object.pins.filter({ $0.package == name }).first
     }
+    
+    /// Gets the data from the package's `.resolved` file about a package with a given repository URL.
+    ///
+    /// - Parameter name: The URL of the package to fetch.
+    /// - Returns: The package's pin data.
+    /// - Throws: Errors that occur when fetching the data.
+    func package(withURL url: String)throws -> Pin? {
+        return try self.resolved().object.pins.filter({ $0.repositoryURL == url }).first
+    }
 }
