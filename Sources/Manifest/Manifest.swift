@@ -35,4 +35,15 @@ public class Manifest {
         }
         return contents
     }
+    
+    /// Rewrites the contents of the package's manifest.
+    ///
+    /// - Parameter string: The data to rewrite the manifest with.
+    /// - Throws: `ManifestError.badURL` if the URL to the manifest cannot be created.
+    func write(with string: String)throws {
+        guard let manifestURL = URL(string: "file:\(fileManager.currentDirectoryPath)/Package.swift") else {
+            throw ManifestError(identifier: "badURL", reason: "Unable to create URL for package manifest file.")
+        }
+        try string.data(using: .utf8)?.write(to: manifestURL)
+    }
 }
