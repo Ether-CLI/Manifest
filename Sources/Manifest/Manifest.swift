@@ -6,7 +6,7 @@ public class Manifest {
     /// Gets the current project's manifest.
     public static let current = Manifest()
     
-    private let fileManager = FileManager.default
+    internal let fileManager = FileManager.default
     
     private init() {}
     
