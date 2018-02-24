@@ -15,7 +15,7 @@ public class Manifest {
     ///
     /// - Returns: The manifest's contents.
     /// - Throws: Errors that occur if there is a badly formed URL or the manifest is not found.
-    func contents()throws -> Data {
+    public func contents()throws -> Data {
         guard let resolvedURL = URL(string: "file:\(fileManager.currentDirectoryPath)/Package.swift") else {
             throw ManifestError(identifier: "badURL", reason: "Unable to create URL for package manifest file.")
         }
@@ -29,7 +29,7 @@ public class Manifest {
     ///
     /// - Returns: The manifest's contents.
     /// - Throws: Errors that occur if there is a badly formed URL or the manifest is not found.
-    func contents()throws -> String {
+    public func contents()throws -> String {
         guard let contents = try String(data: self.contents(), encoding: .utf8) else {
             throw ManifestError(identifier: "unableToConvertDataToString", reason: "The contents of the package's manifest could not be converted to a string with UTF-8 encoding.")
         }
@@ -40,7 +40,7 @@ public class Manifest {
     ///
     /// - Parameter string: The data to rewrite the manifest with.
     /// - Throws: `ManifestError.badURL` if the URL to the manifest cannot be created.
-    func write(with string: String)throws {
+    public func write(with string: String)throws {
         guard let manifestURL = URL(string: "file:\(fileManager.currentDirectoryPath)/Package.swift") else {
             throw ManifestError(identifier: "badURL", reason: "Unable to create URL for package manifest file.")
         }
