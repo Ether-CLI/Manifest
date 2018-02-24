@@ -6,7 +6,7 @@ extension Manifest {
     ///
     /// - Returns: The contents of the packages `.resolved` file.
     /// - Throws: `ManifestError.badPath` if the path to the `.resolved` file is malformed.
-    func resolved()throws -> Resolved {
+    public func resolved()throws -> Resolved {
         guard let resolvedURL = URL(string: "file:\(fileManager.currentDirectoryPath)/Package.resolved") else {
             throw ManifestError(identifier: "badPath", reason: "Bad path to package data. Make sure you are in the project root.")
         }
@@ -19,7 +19,7 @@ extension Manifest {
     /// - Parameter name: The name of the package to fetch.
     /// - Returns: The package's pin data.
     /// - Throws: Errors that occur when fetching the data.
-    func package(withName name: String)throws -> Pin? {
+    public func package(withName name: String)throws -> Pin? {
         return try self.resolved().object.pins.filter({ $0.package == name }).first
     }
     
@@ -28,7 +28,7 @@ extension Manifest {
     /// - Parameter name: The URL of the package to fetch.
     /// - Returns: The package's pin data.
     /// - Throws: Errors that occur when fetching the data.
-    func package(withURL url: String)throws -> Pin? {
+    public func package(withURL url: String)throws -> Pin? {
         return try self.resolved().object.pins.filter({ $0.repositoryURL == url }).first
     }
 }
