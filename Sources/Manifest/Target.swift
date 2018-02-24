@@ -11,6 +11,9 @@ public struct Target: Codable {
 
 extension Manifest {
     
+    /// An interface for the package's target declarations.
+    var targets: Targets { return Targets() }
+    
     /// Gets the targets declared in the project's manifest.
     ///
     /// - warning: Not complete. Only gets target name and dependencies.
@@ -50,4 +53,9 @@ extension Manifest {
     }
     
     
+}
+
+/// A wrapper for interacting with manifest target declarations.
+public class Targets {
+    init() {}
 }
