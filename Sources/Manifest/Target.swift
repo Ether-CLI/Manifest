@@ -13,18 +13,6 @@ extension Manifest {
     
     /// An interface for the package's target declarations.
     var targets: Targets { return Targets(manifest: self) }
-    
-    /// Gets the target declaration with a given name
-    ///
-    /// - parameter name: The name of the target to fetch.
-    ///
-    /// - returns: Thr target with the name passed in.
-    /// - throws: Any errors that occur when fetching the package's tarets.
-    public func target(withName name: String)throws -> Target? {
-        return try self.targets().filter({ $0.name == name }).first
-    }
-    
-    
 }
 
 /// A wrapper for interacting with manifest target declarations.
@@ -62,5 +50,15 @@ public class Targets {
             
             return Target(name: name, path: nil, publicHeadersPath: nil, dependencies: dependencies, exclude: [], source: [])
         }
+    }
+    
+    /// Gets the target declaration with a given name
+    ///
+    /// - parameter name: The name of the target to fetch.
+    ///
+    /// - returns: Thr target with the name passed in.
+    /// - throws: Any errors that occur when fetching the package's tarets.
+    public func get(withName name: String)throws -> Target? {
+        return try self.all().filter({ $0.name == name }).first
     }
 }
