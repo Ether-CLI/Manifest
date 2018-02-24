@@ -1,12 +1,12 @@
 import Foundation
 
-struct Target: Codable {
-    let name: String
-    let path: String?
-    let publicHeadersPath: String?
-    let dependencies: [String]
-    let exclude: [String]
-    let source: [String]
+public struct Target: Codable {
+    public let name: String
+    public let path: String?
+    public let publicHeadersPath: String?
+    public let dependencies: [String]
+    public let exclude: [String]
+    public let source: [String]
 }
 
 extension Manifest {
@@ -17,7 +17,7 @@ extension Manifest {
     ///
     /// - returns: The project's targets parsed into data structures.
     /// - throws: Errors that occur while fetching the manifest contents or create the regex for maching the targets.
-    func targets()throws -> [Target] {
+    public func targets()throws -> [Target] {
         let pattern = try NSRegularExpression(
             pattern: "\\.(testT|t)arget\\(name:\\s*\"(.*?)\",\\s*dependencies:\\s*(\\[.*?\\])\\)",
             options: []
@@ -45,7 +45,9 @@ extension Manifest {
     ///
     /// - returns: Thr target with the name passed in.
     /// - throws: Any errors that occur when fetching the package's tarets.
-    func target(withName name: String)throws -> Target? {
+    public func target(withName name: String)throws -> Target? {
         return try self.targets().filter({ $0.name == name }).first
     }
+    
+    
 }
