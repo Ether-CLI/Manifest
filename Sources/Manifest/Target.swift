@@ -42,7 +42,7 @@ public class Targets {
     ///
     /// - returns: The project's targets parsed into data structures.
     /// - throws: Errors that occur while fetching the manifest contents or create the regex for maching the targets.
-    public func get()throws -> [Target] {
+    public func all()throws -> [Target] {
         let pattern = try NSRegularExpression(
             pattern: "\\.(testT|t)arget\\(name:\\s*\"(.*?)\",\\s*dependencies:\\s*(\\[.*?\\])\\)",
             options: []
