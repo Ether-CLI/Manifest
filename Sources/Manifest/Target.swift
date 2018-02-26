@@ -1,4 +1,5 @@
 import Foundation
+import Utilities
 
 public struct Target: Codable {
     public let name: String
@@ -26,29 +27,27 @@ public class Targets {
     
     /// Gets the targets declared in the project's manifest.
     ///
-    /// - warning: Not complete. Only gets target name and dependencies.
-    ///
     /// - returns: The project's targets parsed into data structures.
     /// - throws: Errors that occur while fetching the manifest contents or create the regex for maching the targets.
+    @available(OSX 10.13, *)
     public func all()throws -> [Target] {
         let pattern = try NSRegularExpression(
-            pattern: "\\.(testT|t)arget\\(name:\\s*\"(.*?)\",\\s*dependencies:\\s*(\\[.*?\\])\\)",
+            pattern: "\\.(testT|t)arget\\(name:\\s*\"(.*?)\",\\s*dependencies:\\s*(\\[.*?\\])(?:,\\s*path:\\s*\"(.*?)\")?(?:,\\s*exclude:\\s*(\\[(?:\\s*\".*?\",?\\s*)*\\]))?(?:,\\s*sources:\\s*(\\[(?:\\s*\".*?\",?\\s*)*\\]))?(?:,\\s*publicHeadersPath:\\s*\"(.*?)\")?\\)",
             options: []
         )
-        let contents: String = try manifest.contents()
-        let string: NSString = NSString(string: contents)
+        let contents: String = try self.manifest.contents()
         
-        return pattern.matches(in: contents, range: NSRange(contents.startIndex..., in: contents)).map { (result) -> Target in
-            let nameRange = result.range(at: 2)
-            let dependenciesRange = result.range(at: 3)
+        return try pattern.matches(in: contents, range: NSRange(contents.startIndex..., in: contents)).map { (result) -> Target in
+            guard let name = contents.substring(at: result.range(at: 2)) else {
+                throw ManifestError(identifier: "nameNotFound", reason: "A target must have a name argument")
+            }
+            let dependencies = contents.parseArray(at: result.range(at: 3))
+            let path = contents.substring(at: result.range(at: 4))
+            let exclude = contents.parseArray(at: result.range(at: 5))
+            let sources = contents.parseArray(at: result.range(at: 6))
+            let headers = contents.substring(at: result.range(at: 7))
             
-            let name = string.substring(with: nameRange)
-            let dependenciesString: String = String(string.substring(with: dependenciesRange).dropFirst().dropLast())
-            let dependencies = dependenciesString.split(separator: ",").map({ (dep) in
-                return String(dep.trimmingCharacters(in: .whitespacesAndNewlines).dropLast().dropFirst())
-            })
-            
-            return Target(name: name, path: nil, publicHeadersPath: nil, dependencies: dependencies, exclude: [], source: [])
+            return Target(name: name, path: path, publicHeadersPath: headers, dependencies: dependencies, exclude: exclude, source: sources)
         }
     }
     
@@ -58,6 +57,7 @@ public class Targets {
     ///
     /// - returns: Thr target with the name passed in.
     /// - throws: Any errors that occur when fetching the package's tarets.
+    @available(OSX 10.13, *)
     public func get(withName name: String)throws -> Target? {
         return try self.all().filter({ $0.name == name }).first
     }
