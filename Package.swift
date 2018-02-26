@@ -12,6 +12,6 @@ let package = Package(
     targets: [
         .target(name: "Manifest", dependencies: ["Utilities"]),
         .target(name: "Utilities", dependencies: []),
-        .testTarget(name: "ManifestTests", dependencies: ["Manifest"]),
+        .testTarget(name: "ManifestTests", dependencies: ["Manifest", "Utilities"]),
     ]
 )
