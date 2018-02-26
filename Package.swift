@@ -10,7 +10,8 @@ let package = Package(
     dependencies: [
     ],
     targets: [
-        .target(name: "Manifest", dependencies: []),
+        .target(name: "Manifest", dependencies: ["Utilities"]),
+        .target(name: "Utilities", dependencies: []),
         .testTarget(name: "ManifestTests", dependencies: ["Manifest"]),
     ]
 )
