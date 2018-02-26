@@ -1,7 +1,7 @@
 import Foundation
 
 fileprivate let brackets: CharacterSet = CharacterSet(charactersIn: "[]")
-fileprivate let arrayString: CharacterSet = CharacterSet(charactersIn: " \"")
+fileprivate let arrayString: CharacterSet = CharacterSet(charactersIn: " \"\n")
 
 extension String {
     public func substring(at range: NSRange) -> String? {
