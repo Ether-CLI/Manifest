@@ -19,4 +19,14 @@ extension String {
             return String(sub).trimmingCharacters(in: arrayString)
         })
     }
+    
+    public var range: NSRange {
+        return NSMakeRange(0, NSMutableString(string: self).length)
+    }
+}
+
+extension NSMutableString {
+    public var range: NSRange {
+        return NSMakeRange(0, self.length)
+    }
 }
