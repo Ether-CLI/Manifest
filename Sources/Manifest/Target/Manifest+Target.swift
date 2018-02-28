@@ -1,15 +1,6 @@
 import Foundation
 import Utilities
 
-public struct Target: Codable {
-    public let name: String
-    public let path: String?
-    public let publicHeadersPath: String?
-    public let dependencies: [String]
-    public let exclude: [String]
-    public let source: [String]
-}
-
 extension Manifest {
     
     /// An interface for the package's target declarations.
