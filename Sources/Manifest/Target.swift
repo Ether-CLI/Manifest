@@ -61,4 +61,25 @@ public class Targets {
     public func get(withName name: String)throws -> Target? {
         return try self.all().filter({ $0.name == name }).first
     }
+    
+    /// Deletes a target from a project's manifest.
+    ///
+    /// - Parameter name: The name of the target to delete.
+    /// - Throws: Error's that occur when create the RegEx for matching the target.
+    public func delete(withName name: String)throws {
+        let target = try NSRegularExpression(
+            pattern: "(?:\\n*\\s*)?\\.(?:testT|t)arget\\(\\s*name:\\s*\"\(name)\".*?\\),?",
+            options: []
+        )
+        let dependencies = try NSRegularExpression(
+            pattern: "(\\.(?:executable|library)\\(\\s*name:\\s*\".*?\"\\s*,\\s*(?:type:\\s*\\.(?:static|dynamic)\\s*,\\s*)?targets:\\s*\\[)((.*?),\\s*\"\(name)\"|\"\(name)\"\\s*,\\s*)(.*?\\]\\))",
+            options: []
+        )
+        
+        let contents: NSMutableString = try manifest.contents()
+        
+        target.replaceMatches(in: contents, options: [], range: contents.range, withTemplate: "")
+        dependencies.replaceMatches(in: contents, options: [], range: contents.range, withTemplate: "$1$3$4")
+        try self.manifest.write(with: contents)
+    }
 }
