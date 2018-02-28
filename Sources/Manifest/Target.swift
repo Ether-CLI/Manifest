@@ -37,7 +37,7 @@ public class Targets {
         )
         let contents: String = try self.manifest.contents()
         
-        return try pattern.matches(in: contents, range: NSRange(contents.startIndex..., in: contents)).map { (result) -> Target in
+        return try pattern.matches(in: contents, range: contents.range).map { (result) -> Target in
             guard let name = contents.substring(at: result.range(at: 2)) else {
                 throw ManifestError(identifier: "nameNotFound", reason: "A target must have a name argument")
             }
