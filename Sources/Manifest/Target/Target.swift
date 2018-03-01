@@ -1,6 +1,9 @@
 /// Represents a target declaration in a project's manifest.
 public struct Target: Codable {
     
+    /// Wheather the target is for testing or not.
+    public let isTest: Bool
+    
     /// The name of the target.
     public let name: String
     
@@ -18,4 +21,15 @@ public struct Target: Codable {
     
     /// The source files to include in the target. If it is empty, then any valid source file is included.
     public let source: [String]
+    
+    /// The target formatted for the manifest.
+    public var description: String {
+        return (self.isTest ? ".testTarget" : "target") +
+        "(name: \"\(self.name)\", dependencies: \(self.dependencies.description)" +
+        (self.path == nil ? "" : ", path: \"\(self.path!)\"") +
+        (self.exclude == [] ? "" : ", exclude: \(self.exclude.description)") +
+        (self.source == [] ? "" : ", sources: \(self.source.description)") +
+        (self.publicHeadersPath == nil ? "" : ", publicHeadersPath: \"\(self.publicHeadersPath!)\"") +
+        ")"
+    }
 }
