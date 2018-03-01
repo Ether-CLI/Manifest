@@ -24,7 +24,7 @@ public struct Target: Codable {
     
     /// The target formatted for the manifest.
     public var description: String {
-        return (self.isTest ? ".testTarget" : "target") +
+        return (self.isTest ? ".testTarget" : ".target") +
         "(name: \"\(self.name)\", dependencies: \(self.dependencies.description)" +
         (self.path == nil ? "" : ", path: \"\(self.path!)\"") +
         (self.exclude == [] ? "" : ", exclude: \(self.exclude.description)") +
