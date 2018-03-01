@@ -26,7 +26,7 @@ public class Manifest {
         if !fileManager.fileExists(atPath: "\(fileManager.currentDirectoryPath)/Package.swift") {
             throw ManifestError(identifier: "badManifestPath", reason: "Bad path to package manifest. Make sure you are in the project root.")
         }
-        return try Data(contentsOf: resolvedURL)
+        return Manifest.environment == .commandline ? try Data(contentsOf: resolvedURL) : testManifest.data(using: .utf8)!
     }
     
     /// Gets the contents of the project's manifest as an `NSMutableString`.
@@ -57,7 +57,7 @@ public class Manifest {
         guard let manifestURL = URL(string: "file:\(fileManager.currentDirectoryPath)/Package.swift") else {
             throw ManifestError(identifier: "badURL", reason: "Unable to create URL for package manifest file.")
         }
-        try string.data(using: .utf8)?.write(to: manifestURL)
+        if Manifest.environment == .commandline { try string.data(using: .utf8)?.write(to: manifestURL) } else { testManifest = string }
     }
     
     /// Rewrites the contents of the package's manifest.
