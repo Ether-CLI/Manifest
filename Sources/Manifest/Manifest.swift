@@ -3,8 +3,12 @@ import Foundation
 /// An interface for a package's manifest.
 public class Manifest {
     
+    /// The current environment that the `Manifest` is being used in.
+    public static var environment: Environment = .commandline
+    
     /// Gets the current project's manifest.
     public static let current = Manifest()
+    
     
     internal let fileManager = FileManager.default
     
