@@ -32,13 +32,15 @@ public class Targets {
             guard let name = contents.substring(at: result.range(at: 2)) else {
                 throw ManifestError(identifier: "nameNotFound", reason: "A target must have a name argument")
             }
+            
+            let isTest = contents.substring(at: result.range(at: 1)) == "testT"
             let dependencies = contents.parseArray(at: result.range(at: 3))
             let path = contents.substring(at: result.range(at: 4))
             let exclude = contents.parseArray(at: result.range(at: 5))
             let sources = contents.parseArray(at: result.range(at: 6))
             let headers = contents.substring(at: result.range(at: 7))
             
-            return Target(name: name, path: path, publicHeadersPath: headers, dependencies: dependencies, exclude: exclude, source: sources)
+            return Target(isTest: isTest, name: name, path: path, publicHeadersPath: headers, dependencies: dependencies, exclude: exclude, source: sources)
         }
     }
     
