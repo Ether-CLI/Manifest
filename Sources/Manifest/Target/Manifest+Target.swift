@@ -12,6 +12,9 @@ public class Targets {
     
     private let manifest: Manifest
     
+    /// Creates an interface to interact with a manifest's targets.
+    ///
+    /// - parameter manifest: The manifest to access the targets from.
     public init(manifest: Manifest) {
         self.manifest = manifest
     }
