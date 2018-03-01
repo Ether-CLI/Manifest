@@ -16,7 +16,8 @@ let package = Package(
     targets: [
         .target(name: "Helpers", dependencies: ["Core", "JSON"]),
         .target(name: "Ether", dependencies: ["Helpers", "Console", "JSON"]),
-        .target(name: "Executable", dependencies: ["Ether"])
+        .target(name: "Executable", dependencies: ["Ether"]),
+        .testTarget(name: "New", dependencies: ["Helpers", "Ether"], path: "New/", exclude: ["Deprecated"]),
     ]
 )
 """
