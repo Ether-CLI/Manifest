@@ -1,4 +1,4 @@
-internal let testManifest = """
+internal var testManifest = """
 // swift-tools-version:4.0
 
 import PackageDescription
