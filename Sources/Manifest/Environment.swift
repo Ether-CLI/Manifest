@@ -1,5 +1,5 @@
 /// Used for telling the current manifest instance what environment it is being used in.
-public struct Environment {
+public struct Environment: Equatable {
     
     /// The name of the environmnt
     let name: String
