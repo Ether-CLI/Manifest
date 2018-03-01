@@ -75,4 +75,48 @@ public class Targets {
         dependencies.replaceMatches(in: contents, options: [], range: contents.range, withTemplate: "$1$3$4")
         try self.manifest.write(with: contents)
     }
+
+    /// Adds a new target to the manifet's `targets` declaration.
+    ///
+    /// - Parameters:
+    ///   - name: The name fo the new target.
+    ///   - path: The path to the target's source from the project's root.
+    ///   - headersPath: The path to the directory containing public headers of a C target. _Only valid for C family library targets._
+    ///   - dependencies: The target's that the target can access through imports.
+    ///   - exclude: Directories and source files to not include in the target's source.
+    ///   - sources: Directories and source files to include in the target's source.
+    ///   - isTest: Wheather or not the target is for testing.
+    /// - Throws: Errors from reading or writing the manifest or creating the RegEx patterns to find the position to place the new target.
+    public func create(
+        withName name: String,
+        path: String? = nil,
+        headersPath: String? = nil,
+        dependencies: [String] = [],
+        exclude: [String] = [],
+        sources: [String] = [],
+        isTest: Bool = false
+    )throws {
+        let target = Target(isTest: isTest, name: name, path: path, publicHeadersPath: headersPath, dependencies: dependencies, exclude: exclude, source: sources)
+        let contents: NSMutableString = try manifest.contents()
+        let pattern: NSRegularExpression
+        
+        if isTest {
+            if try NSRegularExpression(pattern: "(\\.(?:testT|t)arget\\(.*?\\),|],\\s*targets\\s*:\\s*\\[)(?=\\s*\\])", options: []).matches(
+                in: String(contents),
+                options: [],
+                range: contents.range
+            ).count > 0 {
+                pattern = try NSRegularExpression(pattern: "(\\.(?:testT|t)arget\\(.*?\\),|],\\s*targets\\s*:\\s*\\[)(?=\\s*\\])", options: [])
+                pattern.replaceMatches(in: contents, options: [], range: contents.range, withTemplate: "$1\n\(String(repeating: " ", count: 8))\(target.description)")
+            } else {
+                pattern = try NSRegularExpression(pattern: "(\\.(?:testT|t)arget\\(.*?\\)|],\\s*targets\\s*:\\s*\\[)(?=\\s*\\])", options: [])
+                pattern.replaceMatches(in: contents, options: [], range: contents.range, withTemplate: "$1,\n\(String(repeating: " ", count: 8))\(target.description)")
+            }
+        } else {
+            pattern = try NSRegularExpression(pattern: "(],\\s*targets\\s*:\\s*\\[)", options: [])
+            pattern.replaceMatches(in: contents, options: [], range: contents.range, withTemplate: "$1\n\(String(repeating: " ", count: 8))\(target.description),")
+        }
+        
+        try manifest.write(with: contents)
+    }
 }
