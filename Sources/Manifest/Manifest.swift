@@ -20,13 +20,15 @@ public class Manifest {
     /// - Returns: The manifest's contents.
     /// - Throws: Errors that occur if there is a badly formed URL or the manifest is not found.
     public func contents()throws -> Data {
+        if Manifest.environment == .testing { return testManifest.data(using: .utf8)! }
+        
         guard let resolvedURL = URL(string: "file:\(fileManager.currentDirectoryPath)/Package.swift") else {
             throw ManifestError(identifier: "badURL", reason: "Unable to create URL for package manifest file.")
         }
         if !fileManager.fileExists(atPath: "\(fileManager.currentDirectoryPath)/Package.swift") {
             throw ManifestError(identifier: "badManifestPath", reason: "Bad path to package manifest. Make sure you are in the project root.")
         }
-        return Manifest.environment == .commandline ? try Data(contentsOf: resolvedURL) : testManifest.data(using: .utf8)!
+        return try Data(contentsOf: resolvedURL)
     }
     
     /// Gets the contents of the project's manifest as an `NSMutableString`.
@@ -54,10 +56,12 @@ public class Manifest {
     /// - Parameter string: The data to rewrite the manifest with.
     /// - Throws: `ManifestError.badURL` if the URL to the manifest cannot be created.
     public func write(with string: String)throws {
+        if Manifest.environment == .testing { testManifest = string; return }
+        
         guard let manifestURL = URL(string: "file:\(fileManager.currentDirectoryPath)/Package.swift") else {
             throw ManifestError(identifier: "badURL", reason: "Unable to create URL for package manifest file.")
         }
-        if Manifest.environment == .commandline { try string.data(using: .utf8)?.write(to: manifestURL) } else { testManifest = string }
+        try string.data(using: .utf8)?.write(to: manifestURL)
     }
     
     /// Rewrites the contents of the package's manifest.
