@@ -23,7 +23,6 @@ public class Targets {
     ///
     /// - returns: The project's targets parsed into data structures.
     /// - throws: Errors that occur while fetching the manifest contents or create the regex for maching the targets.
-    @available(OSX 10.13, *)
     public func all()throws -> [Target] {
         let pattern = try NSRegularExpression(
             pattern: "\\.(testT|t)arget\\(name:\\s*\"(.*?)\",\\s*dependencies:\\s*(\\[.*?\\])(?:,\\s*path:\\s*\"(.*?)\")?(?:,\\s*exclude:\\s*(\\[(?:\\s*\".*?\",?\\s*)*\\]))?(?:,\\s*sources:\\s*(\\[(?:\\s*\".*?\",?\\s*)*\\]))?(?:,\\s*publicHeadersPath:\\s*\"(.*?)\")?\\)",
@@ -42,7 +41,6 @@ public class Targets {
     ///
     /// - returns: Thr target with the name passed in.
     /// - throws: Any errors that occur when fetching the package's tarets.
-    @available(OSX 10.13, *)
     public func get(withName name: String)throws -> Target? {
         return try self.all().filter({ $0.name == name }).first
     }
