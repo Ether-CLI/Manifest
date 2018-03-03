@@ -1,5 +1,7 @@
+import Foundation
+
 /// Represents a target declaration in a project's manifest.
-public struct Target: Codable {
+public class Target: Codable {
     
     /// Wheather the target is for testing or not.
     public let isTest: Bool
@@ -21,6 +23,17 @@ public struct Target: Codable {
     
     /// The source files to include in the target. If it is empty, then any valid source file is included.
     public let source: [String]
+    
+    ///
+    public init(isTest: Bool, name: String, path: String?, publicHeadersPath: String?, dependencies: [String], exclude: [String], source: [String]) {
+        self.isTest = isTest
+        self.name = name
+        self.path = path
+        self.publicHeadersPath = publicHeadersPath
+        self.dependencies = dependencies
+        self.exclude = exclude
+        self.source = source
+    }
     
     /// The target formatted for the manifest.
     public var description: String {
