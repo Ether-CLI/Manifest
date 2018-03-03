@@ -10,7 +10,7 @@ extension Manifest {
 /// A wrapper for interacting with manifest target declarations.
 public class Targets {
     
-    private let manifest: Manifest
+    internal let manifest: Manifest
     
     /// Creates an interface to interact with a manifest's targets.
     ///
@@ -32,18 +32,7 @@ public class Targets {
         let contents: String = try self.manifest.contents()
         
         return try pattern.matches(in: contents, range: contents.range).map { (result) -> Target in
-            guard let name = contents.substring(at: result.range(at: 2)) else {
-                throw ManifestError(identifier: "nameNotFound", reason: "A target must have a name argument")
-            }
-            
-            let isTest = contents.substring(at: result.range(at: 1)) == "testT"
-            let dependencies = contents.parseArray(at: result.range(at: 3))
-            let path = contents.substring(at: result.range(at: 4))
-            let exclude = contents.parseArray(at: result.range(at: 5))
-            let sources = contents.parseArray(at: result.range(at: 6))
-            let headers = contents.substring(at: result.range(at: 7))
-            
-            return Target(isTest: isTest, name: name, path: path, publicHeadersPath: headers, dependencies: dependencies, exclude: exclude, source: sources, parent: self)
+            return try Target(match: result, in: contents, with: self)
         }
     }
     

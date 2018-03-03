@@ -27,6 +27,35 @@ public class Target {
     /// The `Targets` instance that the target originates from.
     public let parent: Targets
     
+    /// The raw string representation of the target's declaration in the manifest.
+    public let raw: String
+    
+    /// Creates a `Target` with a RegEx match from a `String`.
+    ///
+    /// - Parameters:
+    ///   - match: The RegEx match for the target.
+    ///   - contents: The `String` that the match was fetched from.
+    ///   - parent: The `Targets` model that is creating the `Target`.
+    /// - Throws: `nameNotFound` if the target has no name and `.targetNotFound` if no target is found in the contents with the match passed in.
+    public init(match: NSTextCheckingResult, in contents: String, with parent: Targets)throws {
+        guard let name = contents.substring(at: match.range(at: 2)) else {
+            throw ManifestError(identifier: "nameNotFound", reason: "A target must have a name argument")
+        }
+        guard let raw = contents.substring(at: match.range(at: 0)) else {
+            throw ManifestError(identifier: "targetNotFound", reason: "No target was found with the given match")
+        }
+        
+        self.name = name
+        self.raw = raw
+        self.isTest = contents.substring(at: match.range(at: 1)) == "testT"
+        self.dependencies = contents.parseArray(at: match.range(at: 3))
+        self.path = contents.substring(at: match.range(at: 4))
+        self.exclude = contents.parseArray(at: match.range(at: 5))
+        self.source = contents.parseArray(at: match.range(at: 6))
+        self.publicHeadersPath = contents.substring(at: match.range(at: 7))
+        self.parent = parent
+    }
+    
     ///
     public init(isTest: Bool, name: String, path: String?, publicHeadersPath: String?, dependencies: [String], exclude: [String], source: [String], parent: Targets) {
         self.isTest = isTest
@@ -37,6 +66,13 @@ public class Target {
         self.exclude = exclude
         self.source = source
         self.parent = parent
+        self.raw = (isTest ? ".testTarget" : ".target") +
+            "(name: \"\(name)\", dependencies: \(dependencies.description)" +
+            (path == nil ? "" : ", path: \"\(path!)\"") +
+            (exclude == [] ? "" : ", exclude: \(exclude.description)") +
+            (source == [] ? "" : ", sources: \(source.description)") +
+            (publicHeadersPath == nil ? "" : ", publicHeadersPath: \"\(publicHeadersPath!)\"") +
+            ")"
     }
     
     /// The target formatted for the manifest.
