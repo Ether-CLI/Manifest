@@ -43,7 +43,7 @@ public class Targets {
             let sources = contents.parseArray(at: result.range(at: 6))
             let headers = contents.substring(at: result.range(at: 7))
             
-            return Target(isTest: isTest, name: name, path: path, publicHeadersPath: headers, dependencies: dependencies, exclude: exclude, source: sources)
+            return Target(isTest: isTest, name: name, path: path, publicHeadersPath: headers, dependencies: dependencies, exclude: exclude, source: sources, parent: self)
         }
     }
     
@@ -99,7 +99,7 @@ public class Targets {
         sources: [String] = [],
         isTest: Bool = false
     )throws {
-        let target = Target(isTest: isTest, name: name, path: path, publicHeadersPath: headersPath, dependencies: dependencies, exclude: exclude, source: sources)
+        let target = Target(isTest: isTest, name: name, path: path, publicHeadersPath: headersPath, dependencies: dependencies, exclude: exclude, source: sources, parent: self)
         let contents: NSMutableString = try manifest.contents()
         let pattern: NSRegularExpression
         
