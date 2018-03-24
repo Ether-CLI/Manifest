@@ -9,3 +9,12 @@ public enum ProductType: String {
     case executable
 }
 
+/// Defines wheather a library should be linked to it's clients.
+public enum LibraryLinkingType: String {
+    
+    ///
+    case `static`
+    
+    ///
+    case dynamic
+}
