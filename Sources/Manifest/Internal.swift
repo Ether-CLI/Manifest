@@ -5,6 +5,10 @@ import PackageDescription
 
 let package = Package(
     name: "Ether",
+    providers: [
+        .brew(["gtk+3"]),
+        .apt(["gtk3"])
+    ],
     products: [
         .executable(name: "Ether", targets: ["pomPom", "GorGit", "Flute", "Ether", "banzi", "Kung-Fu"])
     ],
