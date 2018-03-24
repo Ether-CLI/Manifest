@@ -42,4 +42,22 @@ extension Manifest {
         }
         return content.substring(with: match.range(at: 1))
     }
+    
+    /// Sets the value of the `Package.pkgConfig` property in the project's manifest.
+    ///
+    /// - Parameter string: The new value for `Package.pkgConfig`.
+    /// - Throws: Errors that occur when creating a RegEx pattern
+    ///   or reading or writing the manifest.
+    func packageConfig(equals string: String?)throws {
+        let pattern = try NSRegularExpression(pattern: "(\\n?\\s*pkgConfig:\\s*\")(.*?)(\",?)", options: [])
+        let content: NSMutableString = try self.contents()
+        
+        if let string = string {
+            pattern.replaceMatches(in: content, options: [], range: content.range, withTemplate: "$1\(string)$3")
+        } else {
+            pattern.replaceMatches(in: content, options: [], range: content.range, withTemplate: "")
+        }
+        
+        try self.write(with: content)
+    }
 }
