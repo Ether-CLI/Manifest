@@ -3,6 +3,11 @@ import XCTest
 @testable import Utilities
 
 class ManifestTests: XCTestCase {
+    func test()throws {
+        Manifest.environment = .testing
+        
+        try print(Manifest.current.contents() as String)
+    }
     
     static var allTests: [(String, (ManifestTests)throws -> () -> ())] = []
 }
