@@ -37,6 +37,10 @@ extension Manifest {
         let pattern = try NSRegularExpression(pattern: "\\n?\\s*pkgConfig:\\s*\"(.*?)\",?", options: [])
         let content: NSMutableString = try self.contents()
         
+        guard pattern.matches(in: String(content), options: [], range: content.range).count > 0 else {
+            return nil
+        }
+        
         guard let match = pattern.matches(in: String(content), options: [], range: content.range).first else {
             throw ManifestError(identifier: "missingManifestName", reason: "Attempted to access package name, but none where found")
         }
@@ -52,10 +56,12 @@ extension Manifest {
         let pattern = try NSRegularExpression(pattern: "(\\n?\\s*pkgConfig:\\s*\")(.*?)(\",?)", options: [])
         let content: NSMutableString = try self.contents()
         
-        if let string = string {
-            pattern.replaceMatches(in: content, options: [], range: content.range, withTemplate: "$1\(string)$3")
-        } else {
-            pattern.replaceMatches(in: content, options: [], range: content.range, withTemplate: "")
+        if pattern.matches(in: String(content), options: [], range: content.range).count > 0 {
+            let newValue = string == nil ? "" : "$1\(string!)$3"
+            pattern.replaceMatches(in: content, options: [], range: content.range, withTemplate: newValue)
+        } else if let string = string {
+            let namePattern = try NSRegularExpression(pattern: "(Package\\(\\n?(\\s*)name:\\s*\".*?\"),?", options: [])
+            namePattern.replaceMatches(in: content, options: [], range: content.range, withTemplate: "$1,\n$2pkgConfig: \"\(string)\",")
         }
         
         try self.write(with: content)
