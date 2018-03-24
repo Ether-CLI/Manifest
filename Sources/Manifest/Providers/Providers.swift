@@ -9,8 +9,13 @@ struct Provider {
     /// The packages to suggest installation for.
     var packages: [String]
     
+    /// The manifest instance used to mutate or fetch
+    /// information from the project's manifest.
+    let manifest: Manifest
+    
     ///
-    private init(packages: [String]) {
+    private init(packages: [String], manifest: Manifest? = nil) {
         self.packages = packages
+        self.manifest = manifest ?? Manifest.current
     }
 }
