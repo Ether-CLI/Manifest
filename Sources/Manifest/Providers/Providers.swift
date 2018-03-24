@@ -19,3 +19,13 @@ struct Provider {
         self.manifest = manifest ?? Manifest.current
     }
 }
+
+/// Designates which package manager the provider is for.
+public enum ProviderType {
+    
+    ///
+    case brew
+    
+    ///
+    case apt
+}
