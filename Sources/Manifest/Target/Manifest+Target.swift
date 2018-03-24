@@ -31,7 +31,7 @@ public class Targets {
         let contents: String = try self.manifest.contents()
         
         return try pattern.matches(in: contents, range: contents.range).map { (result) -> Target in
-            return try Target(match: result, in: contents, with: self)
+            return try Target(match: result, in: contents, with: self.manifest)
         }
     }
     
@@ -86,7 +86,7 @@ public class Targets {
         sources: [String] = [],
         isTest: Bool = false
     )throws {
-        let target = Target(isTest: isTest, name: name, path: path, publicHeadersPath: headersPath, dependencies: dependencies, exclude: exclude, source: sources, parent: self)
+        let target = Target(isTest: isTest, name: name, path: path, publicHeadersPath: headersPath, dependencies: dependencies, exclude: exclude, source: sources, manifest: self.manifest)
         let contents: NSMutableString = try manifest.contents()
         let pattern: NSRegularExpression
         

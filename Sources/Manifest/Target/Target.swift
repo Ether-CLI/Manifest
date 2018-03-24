@@ -1,4 +1,5 @@
 import Foundation
+import Utilities
 
 /// Represents a target declaration in a project's manifest.
 public class Target {
@@ -25,7 +26,7 @@ public class Target {
     public let source: [String]
     
     /// The `Targets` instance that the target originates from.
-    public let parent: Targets
+    public let manifest: Manifest
     
     /// The raw string representation of the target's declaration in the manifest.
     public let raw: String
@@ -37,7 +38,7 @@ public class Target {
     ///   - contents: The `String` that the match was fetched from.
     ///   - parent: The `Targets` model that is creating the `Target`.
     /// - Throws: `nameNotFound` if the target has no name and `.targetNotFound` if no target is found in the contents with the match passed in.
-    public init(match: NSTextCheckingResult, in contents: String, with parent: Targets)throws {
+    public init(match: NSTextCheckingResult, in contents: String, with manifest: Manifest)throws {
         guard let name = contents.substring(at: match.range(at: 2)) else {
             throw ManifestError(identifier: "nameNotFound", reason: "A target must have a name argument")
         }
@@ -53,11 +54,11 @@ public class Target {
         self.exclude = contents.parseArray(at: match.range(at: 5))
         self.source = contents.parseArray(at: match.range(at: 6))
         self.publicHeadersPath = contents.substring(at: match.range(at: 7))
-        self.parent = parent
+        self.manifest = manifest
     }
     
     ///
-    public init(isTest: Bool, name: String, path: String?, publicHeadersPath: String?, dependencies: [String], exclude: [String], source: [String], parent: Targets) {
+    public init(isTest: Bool, name: String, path: String?, publicHeadersPath: String?, dependencies: [String], exclude: [String], source: [String], manifest: Manifest? = nil) {
         self.isTest = isTest
         self.name = name
         self.path = path
@@ -65,7 +66,7 @@ public class Target {
         self.dependencies = dependencies
         self.exclude = exclude
         self.source = source
-        self.parent = parent
+        self.manifest = manifest ?? Manifest.current
         self.raw = (isTest ? ".testTarget" : ".target") +
             "(name: \"\(name)\", dependencies: \(dependencies.description)" +
             (path == nil ? "" : ", path: \"\(path!)\"") +
