@@ -5,7 +5,7 @@ import XCTest
 class ManifestTests: XCTestCase {
     func test()throws {
         Manifest.environment = .testing
-        try print(Manifest.current.providers())
+        
         try print(Manifest.current.contents() as String)
     }
     

@@ -50,7 +50,7 @@ public class Provider: CustomStringConvertible {
     
     /// The provider formatted for the manifest.
     public var description: String {
-        return ".\(self.type.rawValue)(\(self.packages.description)"
+        return ".\(self.type.rawValue)(\(self.packages.description))"
     }
     
     /// Fetches the data from the `.brew`
