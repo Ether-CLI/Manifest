@@ -94,6 +94,39 @@ public class Provider: CustomStringConvertible {
     }
 }
 
+extension Provider: Saveable {
+    
+    /// Updates the provider's instance in the project's manifest.
+    /// If the instance does not exist yet, it will be created.
+    ///
+    /// - Throws: Errors that occur when creating a RegEx pattern
+    ///   or reading or writing the manifest.
+    public func save() throws {
+        let providers = try NSRegularExpression(pattern: "\n?(\\s*)providers:\\s*\\[", options: [])
+        let provider = try NSRegularExpression(pattern: "\\.\(self.type.rawValue)\\(\\[.*?\\]\\)", options: [])
+        let contents: NSMutableString = try self.manifest.contents()
+        
+        if provider.matches(in: String(contents), options: [], range: contents.range).count > 0 {
+            provider.replaceMatches(in: contents, options: [], range: contents.range, withTemplate: self.description)
+            try self.manifest.write(with: contents)
+            return
+        }
+        
+        if providers.matches(in: String(contents), options: [], range: contents.range).count > 0 {
+            providers.replaceMatches(in: contents, options: [], range: contents.range, withTemplate: "$0\n$1$1\(self.description),")
+        } else {
+            let products = try NSRegularExpression(pattern: "\n?(\\s*)products: \\[", options: [])
+            products.replaceMatches(in: contents, options: [], range: contents.range, withTemplate: """
+            
+            $1providers: [
+            $1    \(self.description)
+            $1],$0
+            """)
+        }
+        try self.manifest.write(with: contents)
+    }
+}
+
 /// Designates which package manager the provider is for.
 public enum ProviderType: String {
     
