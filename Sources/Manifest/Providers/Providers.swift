@@ -90,7 +90,7 @@ public struct Provider {
 }
 
 /// Designates which package manager the provider is for.
-public enum ProviderType {
+public enum ProviderType: String {
     
     ///
     case brew
