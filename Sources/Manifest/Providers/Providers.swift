@@ -119,7 +119,7 @@ extension Manifest {
     /// - Returns: `Package.providers`
     /// - Throws: Errors that occur when creating a RegEx pattern
     ///   or reading or writing the manifest.
-    func providers()throws -> [Provider] {
+    public func providers()throws -> [Provider] {
         let brew = try NSRegularExpression(pattern: "\\.brew\\((\\[.*?\\])\\)", options: [])
         let apt = try NSRegularExpression(pattern: "\\.apt\\((\\[.*?\\])\\)", options: [])
         let contents: String = try self.contents()
