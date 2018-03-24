@@ -2,7 +2,7 @@ import Foundation
 import Utilities
 
 /// Represents a target declaration in a project's manifest.
-public class Target {
+public class Target: CustomStringConvertible {
     
     /// Wheather the target is for testing or not.
     public let isTest: Bool
