@@ -56,7 +56,7 @@ public struct Provider {
         let matches = pattern.matches(in: String(contents), options: [], range: contents.range)
         
         guard let provider = matches.first else {
-            throw ManifestError(identifier: "noBrewProvider", reason: "No `.brew` element found in the `Package.providers` array")
+            throw ManifestError(identifier: "noAPTProvider", reason: "No `.apt` element found in the `Package.providers` array")
         }
         
         let packages = String(contents).parseArray(at: provider.range(at: 1))
