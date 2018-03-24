@@ -90,7 +90,7 @@ public class Target: CustomStringConvertible {
 
 extension Target: Saveable {
     
-    /// Updates the instance in the projects manifest.
+    /// Updates the target's instance in the projects manifest.
     /// If the instance does not exist yet, it will be created.
     ///
     /// - Throws: Errors that occur when creating a RegEx pattern
