@@ -1,6 +1,31 @@
 import Foundation
 import Utilities
 
+extension Manifest {
+    
+    /// Get all the elements in `Package.providers` from the project's manifest.
+    ///
+    /// - Returns: `Package.providers`
+    /// - Throws: Errors that occur when creating a RegEx pattern
+    ///   or reading or writing the manifest.
+    func providers()throws -> [Provider] {
+        let brew = try NSRegularExpression(pattern: "\\.brew\\((\\[.*?\\])\\)", options: [])
+        let apt = try NSRegularExpression(pattern: "\\.apt\\((\\[.*?\\])\\)", options: [])
+        let contents: String = try self.contents()
+        
+        let brewProviders: [Provider] = brew.matches(in: contents, options: [], range: contents.range).map { (match) in
+            let packages = contents.parseArray(at: match.range(at: 1))
+            return Provider(type: .brew, packages: packages, manifest: self)
+        }
+        let aptProviders: [Provider] = apt.matches(in: contents, options: [], range: contents.range).map { (match) in
+            let packages = contents.parseArray(at: match.range(at: 1))
+            return Provider(type: .apt, packages: packages, manifest: self)
+        }
+        
+        return brewProviders + aptProviders
+    }
+}
+
 /// Respresents a system package manager and the packages that should be installed through that given package manager.
 ///
 /// More information [here](https://github.com/apple/swift-package-manager/blob/master/Documentation/PackageDescriptionV4.md#providers)
@@ -17,7 +42,7 @@ public struct Provider {
     private let manifest: Manifest
     
     ///
-    private init(type: ProviderType, packages: [String], manifest: Manifest? = nil) {
+    internal init(type: ProviderType, packages: [String], manifest: Manifest? = nil) {
         self.type = type
         self.packages = packages
         self.manifest = manifest ?? Manifest.current
