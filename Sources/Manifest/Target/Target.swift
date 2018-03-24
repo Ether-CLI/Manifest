@@ -89,6 +89,12 @@ public class Target {
 }
 
 extension Target: Saveable {
+    
+    /// Updates the instance in the projects manifest.
+    /// If the instance does not exist yet, it will be created.
+    ///
+    /// - Throws: Errors that occur when creating a RegEx pattern
+    ///   or reading or writing the manifest.
     public func save() throws {
         let namePattern = "\\(name:\\s*\"\(self.name)\".*?\\)"
         let pattern = try NSRegularExpression(
