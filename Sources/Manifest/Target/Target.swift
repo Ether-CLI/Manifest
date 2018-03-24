@@ -87,3 +87,26 @@ public class Target {
         ")"
     }
 }
+
+extension Target: Saveable {
+    public func save() throws {
+        let namePattern = "\\(name:\\s*\"\(self.name)\".*?\\)"
+        let pattern = try NSRegularExpression(
+            pattern: (self.isTest ? "\\.testTarget" : "\\.target") + namePattern,
+            options: []
+        )
+        let contents: NSMutableString = try self.manifest.contents()
+        
+        if pattern.matches(in: String(contents), options: [], range: contents.range).count > 0 {
+            pattern.replaceMatches(in: contents, options: [], range: contents.range, withTemplate: self.description)
+        } else if self.isTest {
+            let replacement = try NSRegularExpression(pattern: "(?<=\\n|\\[)(\\s*)(\\.testTarget\\(.*?\\))(,?)(?=\\s*\\])", options: [])
+            replacement.replaceMatches(in: contents, options: [], range: contents.range, withTemplate: "$1$2,\n$1\(self.description)")
+        } else {
+            let replacement = try NSRegularExpression(pattern: "(?<=\\n|\\[)(\\s*)(\\.target\\(.*?\\))(,?)(?=\\s*(\\.testTarget|\\]))", options: [])
+            replacement.replaceMatches(in: contents, options: [], range: contents.range, withTemplate: "$1$2,\n$1\(self.description),")
+        }
+        
+        try self.manifest.write(with: contents)
+    }
+}
