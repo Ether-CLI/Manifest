@@ -22,6 +22,26 @@ public struct Provider {
         self.packages = packages
         self.manifest = manifest ?? Manifest.current
     }
+    
+    /// Fetches the data from the `.brew`
+    /// in the `Package.providers` array.
+    ///
+    /// - Parameter manifest: The manifest imstance to fetch the provider with.
+    /// - Returns: A `Provider` instance with the data fetch from the project manifest.
+    /// - Throws: Errors that occur when creating a RegEx pattern
+    ///   or reading or writing the manifest.
+    static func brew(manifest: Manifest = Manifest.current)throws -> Provider {
+        let pattern = try NSRegularExpression(pattern: "\\.brew\\((\\[.*?\\])\\)", options: [])
+        let contents: NSMutableString = try manifest.contents()
+        let matches = pattern.matches(in: String(contents), options: [], range: contents.range)
+        
+        guard let provider = matches.first else {
+            throw ManifestError(identifier: "noBrewProvider", reason: "No `.brew` element found in the `Package.providers` array")
+        }
+        
+        let packages = String(contents).parseArray(at: provider.range(at: 1))
+        return Provider(type: .brew, packages: packages, manifest: manifest)
+    }
 }
 
 /// Designates which package manager the provider is for.
