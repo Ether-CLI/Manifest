@@ -29,7 +29,7 @@ extension Manifest {
 /// Respresents a system package manager and the packages that should be installed through that given package manager.
 ///
 /// More information [here](https://github.com/apple/swift-package-manager/blob/master/Documentation/PackageDescriptionV4.md#providers)
-public struct Provider {
+public struct Provider: CustomStringConvertible {
     
     /// The package manager that the provider represents
     public let type: ProviderType
@@ -46,6 +46,11 @@ public struct Provider {
         self.type = type
         self.packages = packages
         self.manifest = manifest ?? Manifest.current
+    }
+    
+    /// The provider formatted for the manifest.
+    public var description: String {
+        return ".\(self.type.rawValue)(\(self.packages.description)"
     }
     
     /// Fetches the data from the `.brew`
