@@ -4,7 +4,7 @@ import Utilities
 /// A product that is vended by the parent package.
 ///
 /// For more information, visit the [SPM docs](https://github.com/apple/swift-package-manager/blob/master/Documentation/PackageDescriptionV4.md#products).
-public final class Product {
+public final class Product: CustomStringConvertible {
     
     /// Denotes wheather the product is a library or an executable.
     public let type: ProductType
@@ -24,5 +24,14 @@ public final class Product {
         self.name = name
         self.linking = linking
         self.targets = targets
+    }
+    
+    /// The product formatted for the manifest.
+    public var description: String {
+        return "." + type.rawValue + "(" +
+            "name: \"\(self.name)\", " +
+            ((type == .library && linking != nil) ? "type: .\(self.linking!.rawValue), " : "") +
+            "targets: \(self.targets.description)" +
+        ")"
     }
 }
