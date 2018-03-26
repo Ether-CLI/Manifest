@@ -18,12 +18,15 @@ public final class Product: CustomStringConvertible {
     /// The package's targets that the product can access.
     public var targets: [String]
     
+    private let manifest: Manifest
+    
     ///
-    init(type: ProductType, name: String, linking: LibraryLinkingType?, targets: [String]) {
+    public init(type: ProductType, name: String, linking: LibraryLinkingType?, targets: [String]) {
         self.type = type
         self.name = name
         self.linking = linking
         self.targets = targets
+        self.manifest = Manifest.current
     }
     
     /// The product formatted for the manifest.
