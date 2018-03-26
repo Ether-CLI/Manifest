@@ -18,6 +18,10 @@ public final class Product: CustomStringConvertible {
     /// The package's targets that the product can access.
     public var targets: [String]
     
+    /// The name of the `Product` object
+    /// when it is fetched from the manifest.
+    internal var fetchedName: String?
+    
     private let manifest: Manifest
     
     ///
