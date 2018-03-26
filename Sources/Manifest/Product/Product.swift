@@ -33,6 +33,17 @@ public final class Product: CustomStringConvertible {
         self.manifest = Manifest.current
     }
     
+    /// Used to create `Product` objects that who's data is fecthed from the project manifest.
+    internal init(from manifest: Manifest, withType type: ProductType, name: String, linking: LibraryLinkingType?, targets: [String]) {
+        self.type = type
+        self.name = name
+        self.linking = linking
+        self.targets = targets
+        
+        self.fetchedName = name
+        self.manifest = manifest
+    }
+    
     /// The product formatted for the manifest.
     public var description: String {
         return "." + type.rawValue + "(" +
