@@ -35,27 +35,27 @@ public enum DependencyVersionType: CustomStringConvertible {
             
         // Case for `from`
         case "o":
-            let pattern = try NSRegularExpression(pattern: "from\\s*:\\s*(.*)", options: [])
+            let pattern = try NSRegularExpression(pattern: "from\\s*:\\s*\"(.*?)\"", options: [])
             self = try .from(DependencyVersionType.value(in: version, with: pattern))
             
         // Case for `.upToNextMajor`
         case "p":
-            let pattern = try NSRegularExpression(pattern: "\\.upToNextMajor\\(from:\\s*(.*?)\\s*\\)", options: [])
+            let pattern = try NSRegularExpression(pattern: "\\.upToNextMajor\\(from:\\s*\"(.*?)\"\\s*\\)", options: [])
             self = try .upToNextMajor(DependencyVersionType.value(in: version, with: pattern))
             
         // Case for `.exact`
         case "x":
-            let pattern = try NSRegularExpression(pattern: "\\.exact\\((.*?)\\)", options: [])
+            let pattern = try NSRegularExpression(pattern: "\\.exact\\(\"(.*?)\"\\)", options: [])
             self = try .exact(DependencyVersionType.value(in: version, with: pattern))
             
         // Case for `.branch`
         case "r":
-            let pattern = try NSRegularExpression(pattern: "\\.branch\\((.*?)\\)", options: [])
+            let pattern = try NSRegularExpression(pattern: "\\.branch\\(\"(.*?)\"\\)", options: [])
             self = try .branch(DependencyVersionType.value(in: version, with: pattern))
             
         // Case for `.revision`
         case "e":
-            let pattern = try NSRegularExpression(pattern: "\\.revision\\((.*?)\\)", options: [])
+            let pattern = try NSRegularExpression(pattern: "\\.revision\\(\"(.*?)\"\\)", options: [])
             self = try .revision(DependencyVersionType.value(in: version, with: pattern))
             
         // Case for `...` (range)
@@ -68,11 +68,11 @@ public enum DependencyVersionType: CustomStringConvertible {
     /// The version formatted for the manifest.
     public var description: String {
         switch self {
-        case let .from(version): return "from: \(version)"
-        case let .upToNextMajor(version): return ".upToNextMajor(\(version))"
-        case let .exact(version): return ".exact(\(version))"
-        case let .branch(branch): return ".branch(\(branch))"
-        case let .revision(revision): return ".revision(\(revision))"
+        case let .from(version): return "from: \"\(version)\""
+        case let .upToNextMajor(version): return ".upToNextMajor(\"\(version)\")"
+        case let .exact(version): return ".exact(\"\(version)\")"
+        case let .branch(branch): return ".branch(\"\(branch)\")"
+        case let .revision(revision): return ".revision(\"\(revision)\")"
         case let .range(range): return range
         }
     }
