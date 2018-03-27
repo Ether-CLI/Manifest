@@ -2,7 +2,7 @@ import Foundation
 
 /// The version syntax optionas that can be used
 /// when defining a dependency instance.
-public enum DependencyVersionType {
+public enum DependencyVersionType: CustomStringConvertible {
     
     /// `from: "1.0.0"`
     case from(String)
@@ -13,7 +13,9 @@ public enum DependencyVersionType {
     /// `.exact("1.5.8")`
     case exact(String)
     
-    /// `"1.2.3"..<"1.2.6"`
+    /// `"1.2.3"..<"1.2.6"`.
+    /// Instead of just storing version numbers in this case,
+    /// you need to include the whole range.
     case range(String)
     
     /// `.branch("develop")`
@@ -60,6 +62,18 @@ public enum DependencyVersionType {
         default:
             let pattern = try NSRegularExpression(pattern: "(.*)", options: [])
             self = try .range(DependencyVersionType.value(in: version, with: pattern))
+        }
+    }
+    
+    /// The version formatted for the manifest.
+    public var description: String {
+        switch self {
+        case let .from(version): return "from: \(version)"
+        case let .upToNextMajor(version): return ".upToNextMajor(\(version))"
+        case let .exact(version): return ".exact(\(version))"
+        case let .branch(branch): return ".branch(\(branch))"
+        case let .revision(revision): return ".revision(\(revision))"
+        case let .range(range): return range
         }
     }
     
