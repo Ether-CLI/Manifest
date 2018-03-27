@@ -1,6 +1,6 @@
 /// An external package that the current project relies on.
 /// These are stored in the manifest's `dependencies` array.
-public final class Dependency {
+public final class Dependency: CustomStringConvertible {
     
     /// The URI or path to the dependency.
     public let url: String
@@ -24,5 +24,10 @@ public final class Dependency {
         self.url = url
         self.version = try DependencyVersionType(from: version)
         self.manifest = manifest
+    }
+    
+    /// The dependency formatted for the manifest.
+    public var description: String {
+        return ".package(url: \"\(self.url)\", \(self.version.description))"
     }
 }
