@@ -103,6 +103,27 @@ extension Target: Saveable {
         )
         let contents: NSMutableString = try self.manifest.contents()
         
+        if try NSRegularExpression(
+            pattern: "(Package\\(\\n?(\\s*)name\\s*:\\s*\".*?\"\\s*,?\\s*(providers\\s*:\\s*\\[(.|\\n)*?\\](?!\\s*\\)),?\\s*)?(products\\s*:\\s*\\[(.|\\n)*?\\](?!\\s*\\)),?\\s*)?(dependencies\\s*:\\s*\\[(.|\\n)*?\\](?!\\s*\\)))?),?\\s*targets",
+            options: []
+        ).matches(in: String(contents), options: [], range: contents.range).count < 1 {
+            try NSRegularExpression(
+                pattern: "(Package\\(\\n?(\\s*)name\\s*:\\s*\".*?\"\\s*,?\\s*(providers\\s*:\\s*\\[(.|\\n)*?\\](?!\\s*\\)),?\\s*)?(products\\s*:\\s*\\[(.|\\n)*?\\](?!\\s*\\)),?\\s*)?(dependencies\\s*:\\s*\\[(.|\\n)*?\\])?)",
+                options: []
+            ).replaceMatches(
+                in: contents,
+                options: [],
+                range: contents.range,
+                withTemplate: """
+                $1,
+                $2targets: [
+                $2$2\(self.description)
+                $2]
+                """)
+            try self.manifest.write(with: contents)
+            return
+        }
+        
         if pattern.matches(in: String(contents), options: [], range: contents.range).count > 0 {
             pattern.replaceMatches(in: contents, options: [], range: contents.range, withTemplate: self.description)
         } else if self.isTest {
