@@ -1,7 +1,0 @@
-version: "Apple Swift version 4.1 (swiftlang-902.0.43 clang-902.0.37.1)"
-options: "64324a127d83ea6135d73ad2cee0f611"
-build_time: [1522274714, 878388000]
-inputs:
-  "/Users/calebkleveter/Development/Ether-CLI/Manifest/Sources/Utilities/Deletable.swift": [9223372036, 854775807]
-  "/Users/calebkleveter/Development/Ether-CLI/Manifest/Sources/Utilities/Saveable.swift": [9223372036, 854775807]
-  "/Users/calebkleveter/Development/Ether-CLI/Manifest/Sources/Utilities/String+NSRange.swift": [9223372036, 854775807]
