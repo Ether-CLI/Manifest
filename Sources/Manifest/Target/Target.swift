@@ -58,7 +58,16 @@ public class Target: CustomStringConvertible {
     }
     
     ///
-    public init(isTest: Bool, name: String, path: String?, publicHeadersPath: String?, dependencies: [String], exclude: [String], source: [String], manifest: Manifest? = nil) {
+    public init(
+        isTest: Bool,
+        name: String,
+        path: String? = nil,
+        publicHeadersPath: String? = nil,
+        dependencies: [String] = [],
+        exclude: [String] = [],
+        source: [String] = [],
+        manifest: Manifest? = nil
+    ) {
         self.isTest = isTest
         self.name = name
         self.path = path
