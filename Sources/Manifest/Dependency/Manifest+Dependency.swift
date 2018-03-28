@@ -32,7 +32,7 @@ extension Manifest {
     /// - Throws: Errors that occur when creating a RegEx pattern
     ///   or reading or writing the manifest.
     public func dependency(withURL url: String)throws -> Dependency? {
-        let pattern = try NSRegularExpression(pattern: "\\.package\\(\\s*url\\s*:\\s*\"\(url)\"\\s*,\\s*(.*?)\\)(?=\\s*,|\\s*\\])", options: [])
+        let pattern = try NSRegularExpression(pattern: "\\.package\\(\\s*url\\s*:\\s*\"(\(url))\"\\s*,\\s*(.*?)\\)(?=\\s*,|\\s*\\])", options: [])
         let contents: String = try self.contents()
         
         return try pattern.matches(in: contents, options: [], range: contents.range).map { (match) in
