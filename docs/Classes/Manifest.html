@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Manifest Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/Manifest" class="dashAnchor"></a>
+    <a title="Manifest Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a> (97% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        Manifest Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/Dependency.html">Dependency</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Manifest.html">Manifest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Product.html">Product</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Provider.html">Provider</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Target.html">Target</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/DependencyVersionType.html">DependencyVersionType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/LibraryLinkingType.html">LibraryLinkingType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ProductType.html">ProductType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ProviderType.html">ProviderType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/Environment.html">Environment</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ManifestError.html">ManifestError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Pin.html">Pin</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PinState.html">PinState</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Pins.html">Pins</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Resolved.html">Resolved</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Manifest</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Manifest</span></code></pre>
+
+                </div>
+              </div>
+            <p>An interface for a package&rsquo;s manifest.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8ManifestAAC11environmentAA11EnvironmentVvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/environment" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8ManifestAAC11environmentAA11EnvironmentVvpZ">environment</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The current environment that the <code>Manifest</code> is being used in.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">environment</span><span class="p">:</span> <span class="kt"><a href="../Structs/Environment.html">Environment</a></span> <span class="o">=</span> <span class="o">.</span><span class="n">commandline</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8ManifestAAC7currentABvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/current" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8ManifestAAC7currentABvpZ">current</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Gets the current project&rsquo;s manifest.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">current</span> <span class="o">=</span> <span class="kt">Manifest</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8ManifestAAC8contents10Foundation4DataVyKF"></a>
+                    <a name="//apple_ref/swift/Method/contents()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8ManifestAAC8contents10Foundation4DataVyKF">contents()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Gets the contents of the project&rsquo;s manifest as <code>Data</code>.</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    Errors that occur if there is a badly formed URL or the manifest is not found.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">contents</span><span class="p">()</span><span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Data</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The manifest&rsquo;s contents.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8ManifestAAC8contentsSo15NSMutableStringCyKF"></a>
+                    <a name="//apple_ref/swift/Method/contents()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8ManifestAAC8contentsSo15NSMutableStringCyKF">contents()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Gets the contents of the project&rsquo;s manifest as an <code>NSMutableString</code>.</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    Errors that occur if there is a badly formed URL or the manifest is not found.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">contents</span><span class="p">()</span><span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">NSMutableString</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The manifest&rsquo;s contents.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8ManifestAAC8contentsSSyKF"></a>
+                    <a name="//apple_ref/swift/Method/contents()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8ManifestAAC8contentsSSyKF">contents()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Gets the contents of the project&rsquo;s manifest as a <code>String</code>.</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    Errors that occur if there is a badly formed URL or the manifest is not found.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">contents</span><span class="p">()</span><span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The manifest&rsquo;s contents.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8ManifestAAC5writeySS4with_tKF"></a>
+                    <a name="//apple_ref/swift/Method/write(with:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8ManifestAAC5writeySS4with_tKF">write(with:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Rewrites the contents of the package&rsquo;s manifest.</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    <code>ManifestError.badURL</code> if the URL to the manifest cannot be created.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">write</span><span class="p">(</span><span class="n">with</span> <span class="nv">string</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span><span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>string</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The data to rewrite the manifest with.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8ManifestAAC5writeySo15NSMutableStringC4with_tKF"></a>
+                    <a name="//apple_ref/swift/Method/write(with:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8ManifestAAC5writeySo15NSMutableStringC4with_tKF">write(with:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Rewrites the contents of the package&rsquo;s manifest.</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    <code>ManifestError.badURL</code> if the URL to the manifest cannot be created.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">write</span><span class="p">(</span><span class="n">with</span> <span class="nv">string</span><span class="p">:</span> <span class="kt">NSMutableString</span><span class="p">)</span><span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>string</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The string to rewrite the manifest with.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8ManifestAAC12dependenciesSayAA10DependencyCGyKF"></a>
+                    <a name="//apple_ref/swift/Method/dependencies()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8ManifestAAC12dependenciesSayAA10DependencyCGyKF">dependencies()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get all the elements in <code>Package.dependencies</code> array from the project&rsquo;s manifest.</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    Errors that occur when creating a RegEx pattern
+or reading or writing the manifest.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">dependencies</span><span class="p">()</span><span class="k">throws</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt"><a href="../Classes/Dependency.html">Dependency</a></span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code>Package.dependencies</code></p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8ManifestAAC10dependencyAA10DependencyCSgSS7withURL_tKF"></a>
+                    <a name="//apple_ref/swift/Method/dependency(withURL:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8ManifestAAC10dependencyAA10DependencyCSgSS7withURL_tKF">dependency(withURL:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get an element in <code>Package.dependencies</code> array from the project&rsquo;s manifest.</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    <p>Errors that occur when creating a RegEx pattern
+or reading or writing the manifest.</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">dependency</span><span class="p">(</span><span class="n">withURL</span> <span class="nv">url</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span><span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/Dependency.html">Dependency</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>url</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The URL of the dependency to fetch.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code>Package.dependencies</code></p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8ManifestAAC4nameS2SSg6equals_tKF"></a>
+                    <a name="//apple_ref/swift/Method/name(equals:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8ManifestAAC4nameS2SSg6equals_tKF">name(equals:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Gets the name of the <code>Package</code> declaration in the project&rsquo;s manifest.</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    Errors that occur when creating a RegEx pattern
+or reading or writing the manifest.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">name</span><span class="p">(</span><span class="n">equals</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span><span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>name</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A new name for the <code>Package</code> declaration.
+If <code>nil</code> is passed in, the name remains the same.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The value passed into the manifest&rsquo;s <code>Package</code> initializer.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8ManifestAAC13packageConfigSSSgyKF"></a>
+                    <a name="//apple_ref/swift/Method/packageConfig()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8ManifestAAC13packageConfigSSSgyKF">packageConfig()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Gets the value of the <code>Package.pkgConfig</code> property.</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    Errors that occur when creating a RegEx pattern
+or reading or writing the manifest.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">packageConfig</span><span class="p">()</span><span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code>Package.pkgConfig</code></p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8ManifestAAC13packageConfigySSSg6equals_tKF"></a>
+                    <a name="//apple_ref/swift/Method/packageConfig(equals:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8ManifestAAC13packageConfigySSSg6equals_tKF">packageConfig(equals:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the value of the <code>Package.pkgConfig</code> property in the project&rsquo;s manifest.</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    Errors that occur when creating a RegEx pattern
+or reading or writing the manifest.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">packageConfig</span><span class="p">(</span><span class="n">equals</span> <span class="nv">string</span><span class="p">:</span> <span class="kt">String</span><span class="p">?)</span><span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>string</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The new value for <code>Package.pkgConfig</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8ManifestAAC8productsSayAA7ProductCGyKF"></a>
+                    <a name="//apple_ref/swift/Method/products()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8ManifestAAC8productsSayAA7ProductCGyKF">products()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Gets all the <code><a href="../Classes/Product.html">Product</a></code> instances in the current manifest.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">products</span><span class="p">()</span><span class="k">throws</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt"><a href="../Classes/Product.html">Product</a></span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8ManifestAAC7productAA7ProductCSgAA0C4TypeO2as_SS8withNametKF"></a>
+                    <a name="//apple_ref/swift/Method/product(as:withName:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8ManifestAAC7productAA7ProductCSgAA0C4TypeO2as_SS8withNametKF">product(as:withName:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Gets a single <code><a href="../Classes/Product.html">Product</a></code> instances from the current manifest.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">product</span><span class="p">(</span><span class="k">as</span> <span class="nv">type</span><span class="p">:</span> <span class="kt"><a href="../Enums/ProductType.html">ProductType</a></span> <span class="o">=</span> <span class="o">.</span><span class="n">library</span><span class="p">,</span> <span class="n">withName</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span><span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/Product.html">Product</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>type</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Wheather the product is an <code>executable</code> or <code>library</code> (default).</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>name</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The name of the product to fetch.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8ManifestAAC9providersSayAA8ProviderCGyKF"></a>
+                    <a name="//apple_ref/swift/Method/providers()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8ManifestAAC9providersSayAA8ProviderCGyKF">providers()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get all the elements in <code>Package.providers</code> from the project&rsquo;s manifest.</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    Errors that occur when creating a RegEx pattern
+or reading or writing the manifest.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">providers</span><span class="p">()</span><span class="k">throws</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt"><a href="../Classes/Provider.html">Provider</a></span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code>Package.providers</code></p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8ManifestAAC8resolvedAA8ResolvedVyKF"></a>
+                    <a name="//apple_ref/swift/Method/resolved()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8ManifestAAC8resolvedAA8ResolvedVyKF">resolved()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Gets the contents of the package&rsquo;s <code>Package.resolved</code> file as a data structure.</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    <code>ManifestError.badPath</code> if the path to the <code>.resolved</code> file is malformed.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">resolved</span><span class="p">()</span><span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/Resolved.html">Resolved</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The contents of the packages <code>.resolved</code> file.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8ManifestAAC7packageAA3PinVSgSS8withName_tKF"></a>
+                    <a name="//apple_ref/swift/Method/package(withName:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8ManifestAAC7packageAA3PinVSgSS8withName_tKF">package(withName:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Gets the data from the package&rsquo;s <code>.resolved</code> file about a package with a given name.</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    Errors that occur when fetching the data.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">package</span><span class="p">(</span><span class="n">withName</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span><span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/Pin.html">Pin</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>name</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The name of the package to fetch.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The package&rsquo;s pin data.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8ManifestAAC7packageAA3PinVSgSS7withURL_tKF"></a>
+                    <a name="//apple_ref/swift/Method/package(withURL:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8ManifestAAC7packageAA3PinVSgSS7withURL_tKF">package(withURL:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Gets the data from the package&rsquo;s <code>.resolved</code> file about a package with a given repository URL.</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    Errors that occur when fetching the data.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">package</span><span class="p">(</span><span class="n">withURL</span> <span class="nv">url</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span><span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/Pin.html">Pin</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>name</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The URL of the package to fetch.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The package&rsquo;s pin data.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8ManifestAAC7targetsSayAA6TargetCGyKF"></a>
+                    <a name="//apple_ref/swift/Method/targets()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8ManifestAAC7targetsSayAA6TargetCGyKF">targets()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Gets the targets declared in the project&rsquo;s manifest.</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    Errors that occur while fetching the manifest contents or create the regex for maching the targets.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">targets</span><span class="p">()</span><span class="k">throws</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt"><a href="../Classes/Target.html">Target</a></span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The project&rsquo;s targets parsed into data structures.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8ManifestAAC6targetAA6TargetCSgSb4test_SS8withNametKF"></a>
+                    <a name="//apple_ref/swift/Method/target(test:withName:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8ManifestAAC6targetAA6TargetCSgSb4test_SS8withNametKF">target(test:withName:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Gets a target declared in the project&rsquo;s manifest.</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    <p>Errors that occur while fetching the manifest contents or create the regex for maching the targets.</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">target</span><span class="p">(</span><span class="nv">test</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">withName</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span><span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/Target.html">Target</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>test</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Wheather the target to fetch is a test target or not.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>name</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The name of the target to fetch.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The project&rsquo;s targets parsed into data structures.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2018 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2018-03-28)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

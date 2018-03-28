@@ -1,16 +1,13 @@
 import XCTest
 @testable import Manifest
+@testable import Utilities
 
 class ManifestTests: XCTestCase {
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-        XCTAssertEqual(Manifest().text, "Hello, World!")
+    func test()throws {
+        Manifest.environment = .testing
+        
+        try print(Manifest.current.contents() as String)
     }
-
-
-    static var allTests = [
-        ("testExample", testExample),
-    ]
+    
+    static var allTests: [(String, (ManifestTests)throws -> () -> ())] = []
 }
