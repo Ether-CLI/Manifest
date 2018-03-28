@@ -12,7 +12,7 @@ extension Manifest {
     /// - Throws: Errors that occur when creating a RegEx pattern
     ///   or reading or writing the manifest.
     @discardableResult
-    func name(equals name: String? = nil)throws -> String {
+    public func name(equals name: String? = nil)throws -> String {
         let pattern = try NSRegularExpression(pattern: "(Package\\(\\s*name:\\s*\")(.*?)(\")", options: [])
         let content: NSMutableString = try self.contents()
         
@@ -33,7 +33,7 @@ extension Manifest {
     /// - Returns: `Package.pkgConfig`
     /// - Throws: Errors that occur when creating a RegEx pattern
     ///   or reading or writing the manifest.
-    func packageConfig()throws -> String? {
+    public func packageConfig()throws -> String? {
         let pattern = try NSRegularExpression(pattern: "\\n?\\s*pkgConfig:\\s*\"(.*?)\",?", options: [])
         let content: NSMutableString = try self.contents()
         
@@ -52,7 +52,7 @@ extension Manifest {
     /// - Parameter string: The new value for `Package.pkgConfig`.
     /// - Throws: Errors that occur when creating a RegEx pattern
     ///   or reading or writing the manifest.
-    func packageConfig(equals string: String?)throws {
+    public func packageConfig(equals string: String?)throws {
         let pattern = try NSRegularExpression(pattern: "(\\n?\\s*pkgConfig:\\s*\")(.*?)(\",?)", options: [])
         let content: NSMutableString = try self.contents()
         
