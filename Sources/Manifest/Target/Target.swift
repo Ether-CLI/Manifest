@@ -8,7 +8,7 @@ public class Target: CustomStringConvertible {
     public let isTest: Bool
     
     /// The name of the target.
-    public var name: String
+    public let name: String
     
     /// The path to the target from the root of the project.
     public var path: String?
