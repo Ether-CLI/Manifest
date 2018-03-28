@@ -22,7 +22,7 @@ public final class Product: CustomStringConvertible {
     /// when it is fetched from the manifest.
     internal var fetchedName: String?
     
-    private let manifest: Manifest
+    internal let manifest: Manifest
     
     ///
     public init(type: ProductType, name: String, linking: LibraryLinkingType?, targets: [String]) {
@@ -51,46 +51,6 @@ public final class Product: CustomStringConvertible {
             ((type == .library && linking != nil) ? "type: .\(self.linking!.rawValue), " : "") +
             "targets: \(self.targets.description)" +
         ")"
-    }
-}
-
-extension Product: Saveable {
-    
-    /// Updates the product's instance in the project's manifest.
-    /// If the product does not exist in the manifest
-    public func save() throws {
-        let pattern: NSRegularExpression
-        let replacement: String
-        let contents: NSMutableString = try self.manifest.contents()
-        
-        if let name = self.fetchedName {
-            pattern = try NSRegularExpression(pattern: "\\.\(self.type.rawValue)\\(name\\s*:\\s*\"\(name)\".*?\\)", options: [])
-            replacement = self.description
-        } else {
-            let productsArray = try NSRegularExpression(
-                pattern: "Package\\(\\s*name\\s*:\\s*\".*?\"\\s*,\\s*(?:providers\\s*:\\s*\\[(?:.|\\n)*?\\]\\s*(?!\\)),)?\\n?(\\s*)products\\s*:\\s*\\[",
-                options: []
-            )
-            
-            if productsArray.matches(in: String(contents), options: [], range: contents.range).count > 0 {
-                pattern = productsArray
-                replacement = "$0\n$1$1\(self.description),\n"
-            } else {
-                pattern = try NSRegularExpression(
-                    pattern: "(Package\\(\\n?(\\s*)name\\s*:\\s*\".*?\"\\s*,\\s*(?:providers\\s*:\\s*\\[(?:.|\\n)*?\\]\\s*(?!\\)))?)(,)?",
-                    options: []
-                )
-                replacement = """
-                $1,
-                $2products: [
-                $2$2\(self.description)
-                $2]$3
-                """
-            }
-        }
-        
-        pattern.replaceMatches(in: contents, options: [], range: contents.range, withTemplate: replacement)
-        try self.manifest.write(with: contents)
     }
 }
 
