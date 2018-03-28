@@ -1,0 +1,4 @@
+framework module Manifest {
+    header "Manifest-Swift.h"
+    requires objc
+}

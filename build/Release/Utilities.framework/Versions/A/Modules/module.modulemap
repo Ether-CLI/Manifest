@@ -1,0 +1,4 @@
+framework module Utilities {
+    header "Utilities-Swift.h"
+    requires objc
+}

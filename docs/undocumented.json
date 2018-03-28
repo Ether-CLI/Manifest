@@ -1,0 +1,26 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/calebkleveter/Development/Ether-CLI/Manifest/Sources/Manifest/Error.swift",
+      "line": 3,
+      "symbol": "ManifestError",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/calebkleveter/Development/Ether-CLI/Manifest/Sources/Manifest/Error.swift",
+      "line": 4,
+      "symbol": "ManifestError.identifier",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/calebkleveter/Development/Ether-CLI/Manifest/Sources/Manifest/Error.swift",
+      "line": 5,
+      "symbol": "ManifestError.reason",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/calebkleveter/Development/Ether-CLI/Manifest"
+}

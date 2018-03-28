@@ -1,0 +1,61 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/calebkleveter/Development/Ether-CLI/Manifest/Sources/Utilities/Deletable.swift",
+      "line": 1,
+      "symbol": "Deletable",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/calebkleveter/Development/Ether-CLI/Manifest/Sources/Utilities/Deletable.swift",
+      "line": 2,
+      "symbol": "Deletable.delete()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/calebkleveter/Development/Ether-CLI/Manifest/Sources/Utilities/Saveable.swift",
+      "line": 1,
+      "symbol": "Saveable",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/calebkleveter/Development/Ether-CLI/Manifest/Sources/Utilities/Saveable.swift",
+      "line": 2,
+      "symbol": "Saveable.save()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/calebkleveter/Development/Ether-CLI/Manifest/Sources/Utilities/String+NSRange.swift",
+      "line": 7,
+      "symbol": "String.substring(at:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/calebkleveter/Development/Ether-CLI/Manifest/Sources/Utilities/String+NSRange.swift",
+      "line": 14,
+      "symbol": "String.parseArray(at:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/calebkleveter/Development/Ether-CLI/Manifest/Sources/Utilities/String+NSRange.swift",
+      "line": 23,
+      "symbol": "String.range",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/calebkleveter/Development/Ether-CLI/Manifest/Sources/Utilities/String+NSRange.swift",
+      "line": 29,
+      "symbol": "NSMutableString.range",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/calebkleveter/Development/Ether-CLI/Manifest"
+}
