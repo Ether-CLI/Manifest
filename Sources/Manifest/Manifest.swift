@@ -71,4 +71,40 @@ public class Manifest {
     public func write(with string: NSMutableString)throws {
         try self.write(with: String(string))
     }
+    
+    /// Rests the manifest to its orginal state when the project was created
+    /// without extraneous comments or whitespace.
+    ///
+    /// - Throws: Errors when reading or writing the manifest.
+    public func reset()throws {
+        let toolPattern = try NSRegularExpression(pattern: "\\/\\/\\s*swift-tools-version\\s*:\\s*(.*)", options: [])
+        let namePattern = try NSRegularExpression(pattern: "Package\\(\\s*name\\s*:\\s*\"(.*?)\"", options: [])
+        let contents: NSMutableString = try self.contents()
+        
+        let toolRange = toolPattern.matches(in: String(contents), options: [], range: contents.range).first?.range(at: 1)
+        let toolVersion = String(contents).substring(at: toolRange ?? NSRange()) ?? "4.0"
+        
+        let nameRange = namePattern.matches(in: String(contents), options: [], range: contents.range).first?.range(at: 1)
+        let name = String(contents).substring(at: nameRange ?? NSRange()) ?? String(fileManager.currentDirectoryPath.split(separator: "/").last!)
+        
+        let manifest = """
+        // swift-tools-version:\(toolVersion)
+
+        import PackageDescription
+
+        let package = Package(
+            name: "\(name)",
+            products: [
+                .library(name: "\(name)", targets: ["\(name)"]),
+            ],
+            dependencies: [],
+            targets: [
+                .target(name: "\(name)", dependencies: []),
+                .testTarget(name: "\(name)Tests", dependencies: ["\(name)"]),
+            ]
+        )
+        """
+        
+        try self.write(with: manifest)
+    }
 }
