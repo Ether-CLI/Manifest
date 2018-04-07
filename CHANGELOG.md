@@ -1,3 +1,9 @@
+## [0.3.0] 2018-04-07
+
+### Added
+- `Manifest.data` which acts as the manifest file instead of data fetched from a real file.
+- `Manifest.path` for setting a custom path to the manifest file to interact with.
+
 ## [0.2.0] 2018-04-06
 
 ### Added
