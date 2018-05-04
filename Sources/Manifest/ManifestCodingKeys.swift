@@ -25,3 +25,7 @@ public enum ManifestCodingKeys: String, CodingKey {
     ///
     case targets
 }
+
+internal enum ManifestDecodingKeys: String, CodingKey {
+    case manifest
+}

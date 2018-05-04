@@ -36,6 +36,24 @@ public class Manifest: Codable {
         self.path = nil
     }
     
+    ///
+    public required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: ManifestDecodingKeys.self)
+        self.data = try Data(container.decode(String.self, forKey: .manifest).utf8)
+        self.path = nil
+    }
+    
+    ///
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: ManifestCodingKeys.self)
+        try container.encode(self.name(), forKey: .name)
+        try container.encodeIfPresent(self.packageConfig(), forKey: .pkgConfig)
+        try container.encode(self.providers(), forKey: .providers)
+        try container.encode(self.products(), forKey: .products)
+        try container.encode(self.dependencies(), forKey: .dependencies)
+        try container.encode(self.targets(), forKey: .targets)
+    }
+    
     /// Gets the contents of the project's manifest as `Data`.
     ///
     /// - Returns: The manifest's contents.
