@@ -6,7 +6,8 @@ import Utilities
 /// More information [here](https://github.com/apple/swift-package-manager/blob/master/Documentation/PackageDescriptionV4.md#providers)
 public class Provider: CustomStringConvertible, Codable {
     
-    typealias CodingKeys = ProviderCodingKeys
+    /// Keys used for encoding/decoding a `Provider` object.
+    public typealias CodingKeys = ProviderCodingKeys
     
     /// The package manager that the provider represents
     public let type: ProviderType
@@ -102,7 +103,7 @@ public enum ProviderType: String {
     case apt
 }
 
-/// Keys used for encoding/decoding a `Proovider` object.
+/// Keys used for encoding/decoding a `Provider` object.
 public enum ProviderCodingKeys: String, CodingKey {
     case type
     case packages
