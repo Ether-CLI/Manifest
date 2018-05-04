@@ -1,7 +1,7 @@
 import Foundation
 
 /// An interface for a package's manifest.
-public class Manifest: Codable {
+public final class Manifest: Codable {
     
     /// The current environment that the `Manifest` is being used in.
     public static var environment: Environment = .commandline
