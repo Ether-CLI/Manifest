@@ -3,7 +3,7 @@ import Utilities
 
 /// An external package that the current project relies on.
 /// These are stored in the manifest's `dependencies` array.
-public final class Dependency: CustomStringConvertible {
+public final class Dependency: CustomStringConvertible, Codable {
     
     /// Keys used to encode/decode a `Target` object.
     public typealias CodingKeys = DependencyCodingKeys
@@ -26,6 +26,14 @@ public final class Dependency: CustomStringConvertible {
     }
     
     ///
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: DependencyCodingKeys.self)
+        self.url = try container.decode(String.self, forKey: .url)
+        self.version = try DependencyVersionType(from: container.decode(String.self, forKey: .version))
+        self.manifest = Manifest.current
+    }
+    
+    ///
     internal init(manifest: Manifest, url: String, version: String)throws {
         self.url = url
         self.version = try DependencyVersionType(from: version)
@@ -35,6 +43,13 @@ public final class Dependency: CustomStringConvertible {
     /// The dependency formatted for the manifest.
     public var description: String {
         return ".package(url: \"\(self.url)\", \(self.version.description))"
+    }
+    
+    ///
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: DependencyCodingKeys.self)
+        try container.encode(url, forKey: .url)
+        try container.encode(version.description, forKey: .version)
     }
 }
 
