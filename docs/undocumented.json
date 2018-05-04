@@ -20,6 +20,20 @@
       "symbol": "ManifestError.reason",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
+    },
+    {
+      "file": "/Users/calebkleveter/Development/Ether-CLI/Manifest/Sources/Manifest/Providers/Providers.swift",
+      "line": 107,
+      "symbol": "ProviderCodingKeys.type",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/calebkleveter/Development/Ether-CLI/Manifest/Sources/Manifest/Providers/Providers.swift",
+      "line": 108,
+      "symbol": "ProviderCodingKeys.packages",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
     }
   ],
   "source_directory": "/Users/calebkleveter/Development/Ether-CLI/Manifest"

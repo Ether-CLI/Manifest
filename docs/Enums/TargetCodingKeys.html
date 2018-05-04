@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Dependency Class Reference</title>
+    <title>TargetCodingKeys Enumeration Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Class/Dependency" class="dashAnchor"></a>
-    <a title="Dependency Class Reference"></a>
+    <a name="//apple_ref/swift/Enum/TargetCodingKeys" class="dashAnchor"></a>
+    <a title="TargetCodingKeys Enumeration Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html"> Docs</a> (96% documented)</p>
@@ -21,7 +21,7 @@
       <p id="breadcrumbs">
         <a href="../index.html"> Reference</a>
         <img id="carat" src="../img/carat.png" />
-        Dependency Class Reference
+        TargetCodingKeys Enumeration Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -107,15 +107,14 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>Dependency</h1>
+            <h1>TargetCodingKeys</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kt">Dependency</span><span class="p">:</span> <span class="kt">CustomStringConvertible</span><span class="p">,</span> <span class="kt">Codable</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">TargetCodingKeys</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="kt">CodingKey</span></code></pre>
 
                 </div>
               </div>
-            <p>An external package that the current project relies on.
-These are stored in the manifest&rsquo;s <code>dependencies</code> array.</p>
+            <p>Keys for encoding/decoding a <code><a href="../Classes/Target.html">Target</a></code> object.</p>
 
           </section>
           <section class="section task-group-section">
@@ -124,91 +123,9 @@ These are stored in the manifest&rsquo;s <code>dependencies</code> array.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:8Manifest10DependencyC10CodingKeysa"></a>
-                    <a name="//apple_ref/swift/Alias/CodingKeys" class="dashAnchor"></a>
-                    <a class="token" href="#/s:8Manifest10DependencyC10CodingKeysa">CodingKeys</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Keys used to encode/decode a <code><a href="../Classes/Target.html">Target</a></code> object.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">CodingKeys</span> <span class="o">=</span> <span class="kt"><a href="../Enums/DependencyCodingKeys.html">DependencyCodingKeys</a></span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:8Manifest10DependencyC3urlSSvp"></a>
-                    <a name="//apple_ref/swift/Property/url" class="dashAnchor"></a>
-                    <a class="token" href="#/s:8Manifest10DependencyC3urlSSvp">url</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The URI or path to the dependency.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">url</span><span class="p">:</span> <span class="kt">String</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:8Manifest10DependencyC7versionAA0B11VersionTypeOvp"></a>
-                    <a name="//apple_ref/swift/Property/version" class="dashAnchor"></a>
-                    <a class="token" href="#/s:8Manifest10DependencyC7versionAA0B11VersionTypeOvp">version</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The version of the dependency.
-This could be one of multiple cases</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">version</span><span class="p">:</span> <span class="kt"><a href="../Enums/DependencyVersionType.html">DependencyVersionType</a></span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:8Manifest10DependencyCACSS3url_AA0B11VersionTypeO7versiontcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(url:version:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:8Manifest10DependencyCACSS3url_AA0B11VersionTypeO7versiontcfc">init(url:version:)</a>
+                    <a name="/s:8Manifest16TargetCodingKeysO6isTestA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/isTest" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8Manifest16TargetCodingKeysO6isTestA2CmF">isTest</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -222,86 +139,7 @@ This could be one of multiple cases</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">version</span><span class="p">:</span> <span class="kt"><a href="../Enums/DependencyVersionType.html">DependencyVersionType</a></span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:8Manifest10DependencyCACs7Decoder_p4from_tKcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(from:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:8Manifest10DependencyCACs7Decoder_p4from_tKcfc">init(from:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">from</span> <span class="nv">decoder</span><span class="p">:</span> <span class="kt">Decoder</span><span class="p">)</span> <span class="k">throws</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:8Manifest10DependencyC11descriptionSSvp"></a>
-                    <a name="//apple_ref/swift/Property/description" class="dashAnchor"></a>
-                    <a class="token" href="#/s:8Manifest10DependencyC11descriptionSSvp">description</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The dependency formatted for the manifest.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:8Manifest10DependencyC6encodeys7Encoder_p2to_tKF"></a>
-                    <a name="//apple_ref/swift/Method/encode(to:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:8Manifest10DependencyC6encodeys7Encoder_p2to_tKF">encode(to:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">encode</span><span class="p">(</span><span class="n">to</span> <span class="nv">encoder</span><span class="p">:</span> <span class="kt">Encoder</span><span class="p">)</span> <span class="k">throws</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">isTest</span></code></pre>
 
                         </div>
                       </div>
@@ -315,9 +153,9 @@ This could be one of multiple cases</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:8Manifest10DependencyC4saveyyKF"></a>
-                    <a name="//apple_ref/swift/Method/save()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:8Manifest10DependencyC4saveyyKF">save()</a>
+                    <a name="/s:8Manifest16TargetCodingKeysO4nameA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/name" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8Manifest16TargetCodingKeysO4nameA2CmF">name</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -325,21 +163,13 @@ This could be one of multiple cases</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Updates the dependency&rsquo;s instance in the project&rsquo;s manifest.
-If the instance does not exist yet, it will be created.</p>
-<div class="aside aside-throws">
-    <p class="aside-title">Throws</p>
-    Errors that occur when creating a RegEx pattern
-or reading or writing the manifest.
-
-</div>
-
+                        
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">save</span><span class="p">()</span> <span class="k">throws</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">name</span></code></pre>
 
                         </div>
                       </div>
@@ -353,9 +183,9 @@ or reading or writing the manifest.
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:8Manifest10DependencyC6deleteyyKF"></a>
-                    <a name="//apple_ref/swift/Method/delete()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:8Manifest10DependencyC6deleteyyKF">delete()</a>
+                    <a name="/s:8Manifest16TargetCodingKeysO4pathA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/path" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8Manifest16TargetCodingKeysO4pathA2CmF">path</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -363,21 +193,163 @@ or reading or writing the manifest.
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Removes the dependency instance
-from the manifest&rsquo;s <code>Package.dependencies</code> array.</p>
-<div class="aside aside-throws">
-    <p class="aside-title">Throws</p>
-    Errors that occur when creating a RegEx pattern
-or reading or writing the manifest.
-
-</div>
-
+                        
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">delete</span><span class="p">()</span> <span class="k">throws</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">path</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8Manifest16TargetCodingKeysO17publicHeadersPathA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/publicHeadersPath" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8Manifest16TargetCodingKeysO17publicHeadersPathA2CmF">publicHeadersPath</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">publicHeadersPath</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8Manifest16TargetCodingKeysO12dependenciesA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/dependencies" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8Manifest16TargetCodingKeysO12dependenciesA2CmF">dependencies</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">dependencies</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8Manifest16TargetCodingKeysO7excludeA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/exclude" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8Manifest16TargetCodingKeysO7excludeA2CmF">exclude</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">exclude</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8Manifest16TargetCodingKeysO6sourceA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/source" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8Manifest16TargetCodingKeysO6sourceA2CmF">source</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">source</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8Manifest16TargetCodingKeysO3rawA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/raw" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8Manifest16TargetCodingKeysO3rawA2CmF">raw</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">raw</span></code></pre>
 
                         </div>
                       </div>
