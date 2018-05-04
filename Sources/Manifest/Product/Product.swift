@@ -4,7 +4,10 @@ import Utilities
 /// A product that is vended by the parent package.
 ///
 /// For more information, visit the [SPM docs](https://github.com/apple/swift-package-manager/blob/master/Documentation/PackageDescriptionV4.md#products).
-public final class Product: CustomStringConvertible {
+public final class Product: CustomStringConvertible, Encodable {
+    
+    /// Keys used of encoding a `Product` object.
+    public typealias CodingKeys = ProductCodingKeys
     
     /// Denotes wheather the product is a library or an executable.
     public let type: ProductType
@@ -52,4 +55,31 @@ public final class Product: CustomStringConvertible {
             "targets: \(self.targets.description)" +
         ")"
     }
+    
+    /// Encodes the objects public properties to an encoder
+    ///
+    /// - Parameter encoder: The encoder the properties get encoded to.
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: ProductCodingKeys.self)
+        try container.encode(self.type.rawValue, forKey: .type)
+        try container.encode(self.name, forKey: .name)
+        try container.encode(self.targets, forKey: .targets)
+        try container.encodeIfPresent(self.linking?.rawValue, forKey: .linking)
+    }
+}
+
+/// Keys used of encoding a `Product` object.
+public enum ProductCodingKeys: String, CodingKey {
+    
+    ///
+    case type
+    
+    ///
+    case name
+    
+    ///
+    case linking
+    
+    ///
+    case targets
 }
