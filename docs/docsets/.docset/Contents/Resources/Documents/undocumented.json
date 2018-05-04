@@ -2,14 +2,14 @@
   "warnings": [
     {
       "file": "/Users/calebkleveter/Development/Ether-CLI/Manifest/Sources/Manifest/Providers/Providers.swift",
-      "line": 107,
+      "line": 108,
       "symbol": "ProviderCodingKeys.type",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/calebkleveter/Development/Ether-CLI/Manifest/Sources/Manifest/Providers/Providers.swift",
-      "line": 108,
+      "line": 109,
       "symbol": "ProviderCodingKeys.packages",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
