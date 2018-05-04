@@ -5,6 +5,9 @@ import Utilities
 /// These are stored in the manifest's `dependencies` array.
 public final class Dependency: CustomStringConvertible {
     
+    /// Keys used to encode/decode a `Target` object.
+    public typealias CodingKeys = DependencyCodingKeys
+    
     /// The URI or path to the dependency.
     public let url: String
     
@@ -33,4 +36,14 @@ public final class Dependency: CustomStringConvertible {
     public var description: String {
         return ".package(url: \"\(self.url)\", \(self.version.description))"
     }
+}
+
+/// Keys used to encode/decode a `Target` object.
+public enum DependencyCodingKeys: CodingKey {
+    
+    ///
+    case url
+    
+    ///
+    case version
 }
