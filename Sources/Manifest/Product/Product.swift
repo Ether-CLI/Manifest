@@ -4,7 +4,10 @@ import Utilities
 /// A product that is vended by the parent package.
 ///
 /// For more information, visit the [SPM docs](https://github.com/apple/swift-package-manager/blob/master/Documentation/PackageDescriptionV4.md#products).
-public final class Product: CustomStringConvertible {
+public final class Product: CustomStringConvertible, Codable {
+    
+    /// Keys used of encoding a `Product` object.
+    public typealias CodingKeys = ProductCodingKeys
     
     /// Denotes wheather the product is a library or an executable.
     public let type: ProductType
@@ -33,6 +36,17 @@ public final class Product: CustomStringConvertible {
         self.manifest = Manifest.current
     }
     
+    ///
+    public init(from decoder: Decoder) throws {
+       let container = try decoder.container(keyedBy: ProductCodingKeys.self)
+        self.type = try ProductType(rawValue: container.decodeIfPresent(String.self, forKey: .type) ?? "library") ?? .library
+        self.name = try container.decode(String.self, forKey: .name)
+        self.linking = try LibraryLinkingType(rawValue: container.decodeIfPresent(String.self, forKey: .linking) ?? "none")
+        self.targets = try container.decode([String].self, forKey: .targets)
+        
+        self.manifest = Manifest.current
+    }
+    
     /// Used to create `Product` objects that who's data is fecthed from the project manifest.
     internal init(from manifest: Manifest, withType type: ProductType, name: String, linking: LibraryLinkingType?, targets: [String]) {
         self.type = type
@@ -52,4 +66,31 @@ public final class Product: CustomStringConvertible {
             "targets: \(self.targets.description)" +
         ")"
     }
+    
+    /// Encodes the objects public properties to an encoder
+    ///
+    /// - Parameter encoder: The encoder the properties get encoded to.
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: ProductCodingKeys.self)
+        try container.encode(self.type.rawValue, forKey: .type)
+        try container.encode(self.name, forKey: .name)
+        try container.encode(self.targets, forKey: .targets)
+        try container.encodeIfPresent(self.linking?.rawValue, forKey: .linking)
+    }
+}
+
+/// Keys used of encoding a `Product` object.
+public enum ProductCodingKeys: String, CodingKey {
+    
+    ///
+    case type
+    
+    ///
+    case name
+    
+    ///
+    case linking
+    
+    ///
+    case targets
 }
