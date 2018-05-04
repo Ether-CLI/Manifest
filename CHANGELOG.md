@@ -1,3 +1,9 @@
+## [0.4.0] 2018-05-04
+
+### Added
+- All primary types conform to `Codable`.
+
+
 ## [0.3.0] 2018-04-07
 
 ### Added
