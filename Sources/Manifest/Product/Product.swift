@@ -4,7 +4,7 @@ import Utilities
 /// A product that is vended by the parent package.
 ///
 /// For more information, visit the [SPM docs](https://github.com/apple/swift-package-manager/blob/master/Documentation/PackageDescriptionV4.md#products).
-public final class Product: CustomStringConvertible, Encodable {
+public final class Product: CustomStringConvertible, Codable {
     
     /// Keys used of encoding a `Product` object.
     public typealias CodingKeys = ProductCodingKeys
@@ -33,6 +33,17 @@ public final class Product: CustomStringConvertible, Encodable {
         self.name = name
         self.linking = linking
         self.targets = targets
+        self.manifest = Manifest.current
+    }
+    
+    ///
+    public init(from decoder: Decoder) throws {
+       let container = try decoder.container(keyedBy: ProductCodingKeys.self)
+        self.type = try ProductType(rawValue: container.decodeIfPresent(String.self, forKey: .type) ?? "library") ?? .library
+        self.name = try container.decode(String.self, forKey: .name)
+        self.linking = try LibraryLinkingType(rawValue: container.decodeIfPresent(String.self, forKey: .linking) ?? "none")
+        self.targets = try container.decode([String].self, forKey: .targets)
+        
         self.manifest = Manifest.current
     }
     
