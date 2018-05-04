@@ -1,3 +1,8 @@
+## [0.4.1] 2018-05-04
+
+### Fixed
+- Marked `Manifest` class as `final`.
+
 ## [0.4.0] 2018-05-04
 
 ### Added
