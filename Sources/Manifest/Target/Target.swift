@@ -2,7 +2,10 @@ import Foundation
 import Utilities
 
 /// Represents a target declaration in a project's manifest.
-public class Target: CustomStringConvertible {
+public class Target: CustomStringConvertible, Codable {
+    
+    /// Keys for encoding/decoding a `Target` object.
+    public typealias CodingKeys = TargetCodingKeys
     
     /// Wheather the target is for testing or not.
     public let isTest: Bool
@@ -85,6 +88,20 @@ public class Target: CustomStringConvertible {
             ")"
     }
     
+    ///
+    public required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: TargetCodingKeys.self)
+        self.isTest = try container.decode(Bool.self, forKey: .isTest)
+        self.name = try container.decode(String.self, forKey: .name)
+        self.path = try container.decodeIfPresent(String.self, forKey: .path)
+        self.publicHeadersPath = try container.decodeIfPresent(String.self, forKey: .publicHeadersPath)
+        self.dependencies = try container.decode([String].self, forKey: .dependencies)
+        self.exclude = try container.decode([String].self, forKey: .exclude)
+        self.source = try container.decode([String].self, forKey: .source)
+        self.raw = try container.decode(String.self, forKey: .raw)
+        self.manifest = Manifest.current
+    }
+    
     /// The target formatted for the manifest.
     public var description: String {
         return (self.isTest ? ".testTarget" : ".target") +
@@ -95,4 +112,45 @@ public class Target: CustomStringConvertible {
         (self.publicHeadersPath == nil ? "" : ", publicHeadersPath: \"\(self.publicHeadersPath!)\"") +
         ")"
     }
+    
+    ///
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: TargetCodingKeys.self)
+        try container.encode(isTest, forKey: .isTest)
+        try container.encode(name, forKey: .name)
+        try container.encode(path, forKey: .path)
+        try container.encode(publicHeadersPath, forKey: .publicHeadersPath)
+        try container.encode(dependencies, forKey: .dependencies)
+        try container.encode(exclude, forKey: .exclude)
+        try container.encode(source, forKey: .source)
+        try container.encode(raw, forKey: .raw)
+    }
+}
+
+/// Keys for encoding/decoding a `Target` object.
+public enum TargetCodingKeys: String, CodingKey {
+    
+    ///
+    case isTest
+    
+    ///
+    case name
+    
+    ///
+    case path
+    
+    ///
+    case publicHeadersPath
+    
+    ///
+    case dependencies
+    
+    ///
+    case exclude
+    
+    ///
+    case source
+    
+    ///
+    case raw
 }

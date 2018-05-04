@@ -35,6 +35,8 @@ public class Provider: CustomStringConvertible, Codable {
         }
         self.type = type
         self.packages = try container.decode([String].self, forKey: .packages)
+        
+        self.manifest = Manifest.current
     }
     
     /// The provider formatted for the manifest.
