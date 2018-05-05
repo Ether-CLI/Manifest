@@ -1,3 +1,8 @@
+## [0.4.2] 2018-05-05
+
+### Fixed
+- Fixed Linux support for `NSMutableString` to `String` initializer.
+
 ## [0.4.1] 2018-05-04
 
 ### Fixed
