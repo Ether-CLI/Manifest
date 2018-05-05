@@ -4,7 +4,7 @@ extension String {
     
     /// Adds Linux compatibility for the `String(_:)` initializer.
     init(_ mutableString: NSMutableString) {
-        self = mutableString.description
+        self = String(describing: mutableString)
     }
 }
 
