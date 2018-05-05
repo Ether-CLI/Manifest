@@ -1,3 +1,13 @@
+import Foundation
+
+extension String {
+    
+    /// Adds Linux compatibility for the `String(_:)` initializer.
+    init(_ mutableString: NSMutableString) {
+        self = mutableString.description
+    }
+}
+
 internal var testManifest = """
 // swift-tools-version:4.0
 
