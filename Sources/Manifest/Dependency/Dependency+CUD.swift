@@ -19,12 +19,8 @@ extension Dependency: Saveable {
             if stored.matches(in: String(contents), options: [], range: contents.range).count > 0 {
                 stored.replaceMatches(in: contents, options: [], range: contents.range, withTemplate: self.description)
             } else {
-                let pattern = try NSRegularExpression(pattern: "(\\n?(\\s*)dependencies\\s*:\\s*\\[)(\\n?\\s*)(\\]|(.|\\n)*?\\)\\s*\\])", options: [])
-                pattern.replaceMatches(in: contents, options: [], range: contents.range, withTemplate: """
-                    $1
-                    $2$2\(self.description),
-                    $3$4
-                    """)
+                let pattern = try NSRegularExpression(pattern: "(Package\\(\\n?(\\s*)name\\s*:\\s*\".*?\"\\s*,?\\s*(providers\\s*:\\s*\\[(.|\\n)*?\\](?!\\s*\\)),?\\s*)?(products\\s*:\\s*\\[(.|\\n)*?\\](?!\\s*\\)),?\\s*)?(\\n?(\\s*)dependencies\\s*:\\s*\\[)(\\n?\\s*))(\\]|(.|\\n)*?\\)\\s*\\])", options: [])
+                pattern.replaceMatches(in: contents, options: [], range: contents.range, withTemplate: "$1\(self.description),$9$10")
             }
         } else {
             let pattern = try NSRegularExpression(
