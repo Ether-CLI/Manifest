@@ -30,13 +30,14 @@ extension Manifest {
     public func target(test: Bool = false, withName name: String)throws -> Target? {
         let type = test ? "(testT)arget" : "(t)arget"
         let pattern = try NSRegularExpression(
-            pattern: "\\.\(type)\\(name:\\s*\"\(name)\",\\s*dependencies:\\s*(\\[.*?\\])(?:,\\s*path:\\s*\"(.*?)\")?(?:,\\s*exclude:\\s*(\\[(?:\\s*\".*?\",?\\s*)*\\]))?(?:,\\s*sources:\\s*(\\[(?:\\s*\".*?\",?\\s*)*\\]))?(?:,\\s*publicHeadersPath:\\s*\"(.*?)\")?\\)",
+            pattern: "\\.\(type)\\(name:\\s*\"(\(name))\",\\s*dependencies:\\s*(\\[.*?\\])(?:,\\s*path:\\s*\"(.*?)\")?(?:,\\s*exclude:\\s*(\\[(?:\\s*\".*?\",?\\s*)*\\]))?(?:,\\s*sources:\\s*(\\[(?:\\s*\".*?\",?\\s*)*\\]))?(?:,\\s*publicHeadersPath:\\s*\"(.*?)\")?\\)",
             options: []
         )
         let contents: String = try self.contents()
         
         return try pattern.matches(in: contents, range: contents.range).map { (result) -> Target in
+            print("result")
             return try Target(match: result, in: contents, with: self)
-        }.first
+            }.first
     }
 }
