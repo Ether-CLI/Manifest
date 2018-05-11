@@ -1,3 +1,9 @@
+## [0.4.4] 2018-05-11
+
+### Fixed
+- Regex for putting new dependency in populated `dependencies` array.
+- Regex for fetching a target by its name. Added capture group around target name.
+
 ## [0.4.3] 2018-05-11
 
 ### Fixed
