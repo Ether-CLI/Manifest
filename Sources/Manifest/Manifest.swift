@@ -66,7 +66,7 @@ public final class Manifest: Codable {
         guard let resolvedURL = URL(string: self.path!) else {
             throw ManifestError(identifier: "badURL", reason: "Unable to create URL for package manifest file.")
         }
-        if !fileManager.fileExists(atPath: self.path!) {
+        if fileManager.fileExists(atPath: self.path!) {
             throw ManifestError(identifier: "badManifestPath", reason: "Bad path to package manifest. Make sure you are in the project root.")
         }
         
