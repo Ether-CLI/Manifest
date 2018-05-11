@@ -1,3 +1,8 @@
+## [0.4.3] 2018-05-11
+
+### Fixed
+- Fail manifest read if file doesn't exist instead of when it exists
+
 ## [0.4.2] 2018-05-05
 
 ### Fixed
