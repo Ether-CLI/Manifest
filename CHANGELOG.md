@@ -1,3 +1,10 @@
+## [0.4.5] 2018-05-18
+
+### Fixed
+- Removed rouge `result` output from `Manifest.targets()` method.
+- Added missing `from` parameter label to `DependencyVersionType.upToNextMajor` description string.
+- Remove dependencies leading horizontal whitespace and leading newline when removing it from the manifest.
+
 ## [0.4.4] 2018-05-11
 
 ### Fixed

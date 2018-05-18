@@ -69,7 +69,7 @@ public enum DependencyVersionType: CustomStringConvertible {
     public var description: String {
         switch self {
         case let .from(version): return "from: \"\(version)\""
-        case let .upToNextMajor(version): return ".upToNextMajor(\"\(version)\")"
+        case let .upToNextMajor(version): return ".upToNextMajor(from: \"\(version)\")"
         case let .exact(version): return ".exact(\"\(version)\")"
         case let .branch(branch): return ".branch(\"\(branch)\")"
         case let .revision(revision): return ".revision(\"\(revision)\")"

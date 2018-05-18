@@ -47,7 +47,7 @@ extension Dependency: Deletable {
     /// - Throws: Errors that occur when creating a RegEx pattern
     ///   or reading or writing the manifest.
     public func delete() throws {
-        let pattern = try NSRegularExpression(pattern: "\\.package\\(\\s*url\\s*:\\s*\"\(self.url)\".*?\\),?(?=\\s*\\]|\\s*\\n|\\s*\\.)", options: [])
+        let pattern = try NSRegularExpression(pattern: "\\h*\\.package\\(\\s*url\\s*:\\s*\"\(self.url)\".*?\\),?(?=\\s*\\]|\\s*\\n|\\s*\\.)\n?", options: [])
         let contents: NSMutableString = try self.manifest.contents()
         
         pattern.replaceMatches(in: contents, options: [], range: contents.range, withTemplate: "")

@@ -36,8 +36,7 @@ extension Manifest {
         let contents: String = try self.contents()
         
         return try pattern.matches(in: contents, range: contents.range).map { (result) -> Target in
-            print("result")
             return try Target(match: result, in: contents, with: self)
-            }.first
+        }.first
     }
 }
