@@ -3,7 +3,6 @@ import Utilities
 
 extension Manifest {
     
-    
     /// Gets the name of the `Package` declaration in the project's manifest.
     ///
     /// - Parameter name: A new name for the `Package` declaration.
@@ -65,5 +64,30 @@ extension Manifest {
         }
         
         try self.write(with: content)
+    }
+}
+
+extension Manifest {
+    
+    /// Saves a manifest element to a manifest which is not its parent.
+    ///
+    /// - Parameter element: The manifest element to save to the manifest.
+    public func save<Element>(_ element: Element)throws where Element: Saveable & ManifestElement {
+        let parent = element.manifest
+        
+        element.manifest = self
+        try element.save()
+        element.manifest = parent
+    }
+    
+    /// Deletes a manifest element from a manifest which is not its parent.
+    ///
+    /// - Parameter element: The element to delete from the manifest.
+    public func delete<Element>(_ element: Element)throws where Element: Deletable & ManifestElement {
+        let parent = element.manifest
+        
+        element.manifest = self
+        try element.delete()
+        element.manifest = parent
     }
 }
