@@ -1,3 +1,10 @@
+## [0.4.6] 2018-08-11
+
+### Fixed
+- White space in dependencies array when the first dependency is added to the manifest.
+- Fixed adding package to dependencies array when the last package has a trailing comma.
+
+
 ## [0.4.5] 2018-05-18
 
 ### Fixed
