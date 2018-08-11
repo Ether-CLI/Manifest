@@ -3,7 +3,7 @@ import Utilities
 
 /// An external package that the current project relies on.
 /// These are stored in the manifest's `dependencies` array.
-public final class Dependency: CustomStringConvertible, Codable {
+public final class Dependency: ManifestElement, CustomStringConvertible, Codable {
     
     /// Keys used to encode/decode a `Target` object.
     public typealias CodingKeys = DependencyCodingKeys
@@ -16,7 +16,7 @@ public final class Dependency: CustomStringConvertible, Codable {
     public var version: DependencyVersionType
     
     ///
-    internal let manifest: Manifest
+    public var manifest: Manifest
     
     ///
     public init(url: String, version: DependencyVersionType) {

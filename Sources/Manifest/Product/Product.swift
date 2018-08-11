@@ -4,7 +4,7 @@ import Utilities
 /// A product that is vended by the parent package.
 ///
 /// For more information, visit the [SPM docs](https://github.com/apple/swift-package-manager/blob/master/Documentation/PackageDescriptionV4.md#products).
-public final class Product: CustomStringConvertible, Codable {
+public final class Product: ManifestElement, CustomStringConvertible, Codable {
     
     /// Keys used of encoding a `Product` object.
     public typealias CodingKeys = ProductCodingKeys
@@ -25,7 +25,8 @@ public final class Product: CustomStringConvertible, Codable {
     /// when it is fetched from the manifest.
     internal var fetchedName: String?
     
-    internal let manifest: Manifest
+    /// The manifest that owns the product.
+    public var manifest: Manifest
     
     ///
     public init(type: ProductType, name: String, linking: LibraryLinkingType?, targets: [String]) {

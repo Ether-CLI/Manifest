@@ -4,7 +4,7 @@ import Utilities
 /// Respresents a system package manager and the packages that should be installed through that given package manager.
 ///
 /// More information [here](https://github.com/apple/swift-package-manager/blob/master/Documentation/PackageDescriptionV4.md#providers)
-public class Provider: CustomStringConvertible, Codable {
+public class Provider: ManifestElement, CustomStringConvertible, Codable {
     
     /// Keys used for encoding/decoding a `Provider` object.
     public typealias CodingKeys = ProviderCodingKeys
@@ -17,7 +17,7 @@ public class Provider: CustomStringConvertible, Codable {
     
     /// The manifest instance used to mutate or fetch
     /// information from the project's manifest.
-    internal let manifest: Manifest
+    public var manifest: Manifest
     
     ///
     internal init(type: ProviderType, packages: [String], manifest: Manifest? = nil) {

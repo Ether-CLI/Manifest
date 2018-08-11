@@ -2,7 +2,7 @@ import Foundation
 import Utilities
 
 /// Represents a target declaration in a project's manifest.
-public class Target: CustomStringConvertible, Codable {
+public class Target: ManifestElement, CustomStringConvertible, Codable {
     
     /// Keys for encoding/decoding a `Target` object.
     public typealias CodingKeys = TargetCodingKeys
@@ -28,8 +28,8 @@ public class Target: CustomStringConvertible, Codable {
     /// The source files to include in the target. If it is empty, then any valid source file is included.
     public var source: [String]
     
-    /// The `Targets` instance that the target originates from.
-    public let manifest: Manifest
+    /// The `Package` instance that the target originates from.
+    public var manifest: Manifest
     
     /// The raw string representation of the target's declaration in the manifest.
     public let raw: String
